@@ -6,21 +6,26 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
     primary = Color.White,
-    onPrimary = Color.Black,
+    onPrimary = Color.LightGray,
     primaryVariant = LightPurple,
     secondary = Cyan,
-    background = BackgroundWhite
+    surface = SurfaceWhite,
+    onSurface = Color.Black,
+    onBackground = Color.Black
 )
 
 private val LightColorPalette = lightColors(
     primary = Color.White,
-    onPrimary = Color.Black,
+    onPrimary = Color.LightGray,
     primaryVariant = LightPurple,
     secondary = Cyan,
-    background = BackgroundWhite
+    surface = SurfaceWhite,
+    onSurface = Color.Black,
+    onBackground = Color.Black
 
     /* Other default colors to override
     background = Color.White,
@@ -39,6 +44,11 @@ fun ToDoAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composabl
     } else {
         LightColorPalette
     }
+
+    val systemUiController = rememberSystemUiController()
+    systemUiController.setStatusBarColor(
+        color = Color.White
+    )
 
     MaterialTheme(
         colors = colors,

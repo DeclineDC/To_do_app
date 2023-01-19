@@ -48,7 +48,7 @@ fun TaskItem(
             horizontalArrangement = Arrangement.Start
         ) {
             Text(
-                text = "${task.dayOfMonth}" + "/${task.month}" + "/${task.year}",
+                text = "" /*"${task.dayOfMonth}" + "/${task.month}" + "/${task.year}"*/,
                 style = MaterialTheme.typography.h5
             )
         }

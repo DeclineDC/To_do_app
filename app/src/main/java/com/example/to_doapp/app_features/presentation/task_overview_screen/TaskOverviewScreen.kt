@@ -23,6 +23,7 @@ import androidx.navigation.NavController
 import com.example.to_doapp.R
 import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TaskItem
 import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TaskOverviewTopBar
+import com.example.to_doapp.app_features.presentation.util.Screen
 import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
@@ -45,7 +46,7 @@ fun TaskOverviewScreen(
                 .padding(padding)
                 .background(MaterialTheme.colors.surface)
         ) {
-            TaskOverviewTopBar(onAddClick = { /*TODO*/ })
+            TaskOverviewTopBar(onAddClick = { navController.navigate(Screen.AddEditTaskScreen.route) })
             Divider(thickness = 2.dp, modifier = Modifier.shadow(elevation = 1.dp))
             Box(
                 modifier = Modifier.fillMaxSize(),

@@ -18,7 +18,9 @@ import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskO
 import com.example.to_doapp.app_features.presentation.util.Screen
 import com.example.to_doapp.ui.theme.LocalSpacing
 import com.example.to_doapp.ui.theme.ToDoAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

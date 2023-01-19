@@ -37,7 +37,7 @@ class AddEditTaskViewModel @Inject constructor(
                                 description = state.description
                             )
                         )
-
+                        _eventFlow.emit(UiEvent.SaveTask)
                     } catch (e: InvalidTaskException) {
                         _eventFlow.emit(
                             UiEvent.ShowSnackBar(
@@ -47,6 +47,16 @@ class AddEditTaskViewModel @Inject constructor(
 
                     }
                 }
+            }
+            is AddEditTaskEvent.OnDescriptionChange -> {
+                state = state.copy(
+                    description = event.value
+                )
+            }
+            is AddEditTaskEvent.OnTitleChange -> {
+                state = state.copy(
+                    title = event.value
+                )
             }
         }
     }

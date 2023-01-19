@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -22,6 +23,9 @@ import androidx.navigation.NavController
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.AddButton
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.TextFieldRow
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewViewModel
+import com.example.to_doapp.app_features.presentation.util.Screen
+import com.example.to_doapp.app_features.presentation.util.UiEvent
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun AddEditTaskScreen(
@@ -30,6 +34,21 @@ fun AddEditTaskScreen(
 ) {
 
     val scaffoldState = rememberScaffoldState()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.eventFlow.collectLatest { event ->
+            when (event) {
+                is UiEvent.ShowSnackBar -> {
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = event.message
+                    )
+                }
+                is UiEvent.SaveTask -> {
+                    navController.navigate(Screen.TaskOverviewScreen.route)
+                }
+            }
+        }
+    }
 
     Scaffold(scaffoldState = scaffoldState, modifier = Modifier.fillMaxSize()) { padding ->
         Column(
@@ -42,7 +61,7 @@ fun AddEditTaskScreen(
 
             TextFieldRow(
                 text = "Title",
-                value = "test",
+                value = viewModel.state.title,
                 color = Color.Black,
                 isEditable = true,
                 keyboardOptions = KeyboardOptions(
@@ -50,16 +69,21 @@ fun AddEditTaskScreen(
                     capitalization = KeyboardCapitalization.Words
                 ),
                 onValueChange = {
+                    viewModel.onEvent(
+                        AddEditTaskEvent.OnTitleChange(it)
+                    )
                 }
             )
             TextFieldRow(
                 text = "Description",
-                value = "test",
+                value = viewModel.state.description,
                 color = Color.Black,
                 isEditable = true,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 onValueChange = {
-
+                    viewModel.onEvent(
+                        AddEditTaskEvent.OnDescriptionChange(it)
+                    )
                 }
             )
 

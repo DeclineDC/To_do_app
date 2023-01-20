@@ -21,6 +21,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.AddButton
+import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.AddEditTaskTopBar
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.TextFieldRow
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewViewModel
 import com.example.to_doapp.app_features.presentation.util.Screen
@@ -58,6 +59,10 @@ fun AddEditTaskScreen(
                 .padding(padding)
                 .background(MaterialTheme.colors.surface)
         ) {
+            AddEditTaskTopBar(
+                onAddClick = {},
+                onDeleteClick = {},
+                onCancelClick = {})
 
             TextFieldRow(
                 text = "Title",

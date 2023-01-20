@@ -4,4 +4,6 @@
     <string name="tasks">Tasks</string>
     <string name="add">Add</string>
     <string name="add_your_first_task">Add your first task...</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

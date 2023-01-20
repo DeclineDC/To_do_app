@@ -48,25 +48,18 @@ fun TaskOverviewScreen(
         ) {
             TaskOverviewTopBar(onAddClick = { navController.navigate(Screen.AddEditTaskScreen.route) })
             Divider(thickness = 2.dp, modifier = Modifier.shadow(elevation = 1.dp))
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                LazyColumn(contentPadding = PaddingValues(bottom = 80.dp)) {
-                    items(viewModel.state.tasks) { task ->
-                        TaskItem(
-                            task = task,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(MaterialTheme.colors.background)
-                        )
-
-                    }
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(viewModel.state.tasks) { task ->
+                    TaskItem(
+                        task = task,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colors.surface)
+                    )
                 }
             }
-
-
         }
 
     }
+
 }

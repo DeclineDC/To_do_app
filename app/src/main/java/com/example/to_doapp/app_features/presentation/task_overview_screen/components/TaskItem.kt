@@ -37,8 +37,7 @@ fun TaskItem(
             Text(text = task.title, style = MaterialTheme.typography.body1)
             Text(
                 modifier = Modifier.offset(y = 12.dp),
-                text = "€ ${task.description}",
-                style = MaterialTheme.typography.h3
+                text = "${task.description}"
             )
         }
         Row(

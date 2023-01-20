@@ -20,12 +20,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.AddButton
-import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.AddEditTaskTopBar
-import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.TextFieldRow
+import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.*
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewViewModel
 import com.example.to_doapp.app_features.presentation.util.Screen
 import com.example.to_doapp.app_features.presentation.util.UiEvent
+import com.example.to_doapp.ui.theme.LocalSpacing
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -35,6 +34,7 @@ fun AddEditTaskScreen(
 ) {
 
     val scaffoldState = rememberScaffoldState()
+    val spacing = LocalSpacing.current
 
     LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
@@ -64,39 +64,29 @@ fun AddEditTaskScreen(
                 onDeleteClick = {},
                 onCancelClick = {})
 
-            TextFieldRow(
+            Spacer(modifier = Modifier.padding(spacing.spaceSmall))
+
+            CardForm(
                 text = "Title",
-                value = viewModel.state.title,
-                color = Color.Black,
+                value = "",
                 isEditable = true,
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Text,
-                    capitalization = KeyboardCapitalization.Words
-                ),
-                onValueChange = {
-                    viewModel.onEvent(
-                        AddEditTaskEvent.OnTitleChange(it)
-                    )
-                }
-            )
-            TextFieldRow(
-                text = "Description",
-                value = viewModel.state.description,
-                color = Color.Black,
-                isEditable = true,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                onValueChange = {
-                    viewModel.onEvent(
-                        AddEditTaskEvent.OnDescriptionChange(it)
-                    )
-                }
+                onValueChange = {},
+                keyboardOptions = KeyboardOptions()
             )
 
-            AddButton(
-                text = "Add",
-                onClick = { viewModel.onEvent(AddEditTaskEvent.OnSaveTask) },
-                color = MaterialTheme.colors.secondary
+            Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
+
+            CardForm(
+                text = "Description",
+                value = "",
+                isEditable = true,
+                onValueChange = {},
+                keyboardOptions = KeyboardOptions()
             )
+
+            Spacer(modifier = Modifier.padding(spacing.spaceExtraLarge))
+
+            AddEditButton(text = "Save Task", onClick = {})
 
         }
 

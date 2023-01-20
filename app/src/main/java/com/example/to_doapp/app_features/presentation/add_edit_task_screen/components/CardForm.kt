@@ -32,9 +32,16 @@ fun CardForm(
             elevation = 1.dp,
             backgroundColor = MaterialTheme.colors.primary,
         ) {
-            Column(modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = spacing.space12, end = spacing.space12, top = spacing.space12, bottom = spacing.spaceSmall)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = spacing.space12,
+                        end = spacing.space12,
+                        top = spacing.space12,
+                        bottom = spacing.spaceSmall
+                    )
+            ) {
                 Text(text = text)
                 TextField(
                     value = value,
@@ -46,12 +53,7 @@ fun CardForm(
                         backgroundColor = MaterialTheme.colors.primary
                     )
                 )
-
             }
-
-
         }
     }
-
-
 }

@@ -84,7 +84,11 @@ fun AddEditTaskScreen(
                 keyboardOptions = KeyboardOptions()
             )
 
-            Spacer(modifier = Modifier.padding(spacing.spaceExtraLarge))
+            Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
+
+            ButtonCardForm(text = "Repeatable Task", onCheckedChange = {})
+
+            Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
 
             AddEditButton(text = "Save Task", onClick = {})
 

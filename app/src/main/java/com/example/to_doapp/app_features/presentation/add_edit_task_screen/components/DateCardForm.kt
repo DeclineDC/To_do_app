@@ -1,10 +1,11 @@
 package com.example.to_doapp.app_features.presentation.add_edit_task_screen.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,8 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
-fun CardForm(
-    text: String,
+fun DateCardForm(
     value: String,
     isEditable: Boolean,
     onValueChange: (String) -> Unit,
@@ -45,22 +45,29 @@ fun CardForm(
                         bottom = spacing.spaceSmall
                     )
             ) {
-                Text(text = text, modifier = Modifier.offset(x = 13.dp))
+                Text(text = "Task Due By", modifier = Modifier.offset(x = 13.dp))
                 TextField(
                     value = value,
                     onValueChange = onValueChange,
                     keyboardOptions = keyboardOptions,
                     readOnly = !isEditable,
-                    textStyle = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold),
                     singleLine = true,
+                    textStyle = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold),
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.DateRange,
+                            contentDescription = null
+                        )
+                    },
                     colors = TextFieldDefaults.textFieldColors(
                         backgroundColor = MaterialTheme.colors.primary,
                         focusedIndicatorColor = MaterialTheme.colors.primary,
                         unfocusedIndicatorColor = MaterialTheme.colors.primary,
                         cursorColor = MaterialTheme.colors.onPrimary
-                    )
+                    ), modifier = Modifier.fillMaxWidth()
                 )
             }
         }
     }
+
 }

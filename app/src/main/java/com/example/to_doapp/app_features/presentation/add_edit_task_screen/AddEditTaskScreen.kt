@@ -74,8 +74,6 @@ fun AddEditTaskScreen(
                 keyboardOptions = KeyboardOptions()
             )
 
-            Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
-
             CardForm(
                 text = "Description",
                 value = "",
@@ -84,12 +82,13 @@ fun AddEditTaskScreen(
                 keyboardOptions = KeyboardOptions()
             )
 
-            Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
-
-            ButtonCardForm(text = "Repeatable Task", onCheckedChange = {})
-
-            Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
-
+            DateCardForm(
+                value = "21/01/2023",
+                isEditable = false,
+                onValueChange = {},
+                keyboardOptions = KeyboardOptions()
+            )
+            SwitchCardForm()
             AddEditButton(text = "Save Task", onClick = {})
 
         }

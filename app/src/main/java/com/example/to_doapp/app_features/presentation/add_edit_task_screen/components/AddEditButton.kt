@@ -32,6 +32,6 @@ fun AddEditButton(
             .fillMaxWidth()
             .padding(spacing.space12)
     ) {
-        Text(text = text, color = White)
+        Text(text = text, color = White, modifier = Modifier.padding(spacing.spaceExtraSmall))
     }
 }

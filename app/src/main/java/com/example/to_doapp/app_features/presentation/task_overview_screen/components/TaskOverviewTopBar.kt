@@ -1,17 +1,16 @@
 package com.example.to_doapp.app_features.presentation.task_overview_screen.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -32,36 +31,23 @@ fun TaskOverviewTopBar(
     val spacing = LocalSpacing.current
 
     Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
+        horizontalArrangement = Arrangement.End,
+        verticalAlignment = Alignment.Bottom,
         modifier = modifier
             .fillMaxWidth()
+            .fillMaxHeight(0.1f)
             .background(color = MaterialTheme.colors.primary)
+            .padding(start = 12.dp, top = 32.dp, end = 12.dp, bottom = 12.dp)
     ) {
-        Row() {
-            IconButton(onClick = {}) {
-                Icon(
-                    imageVector = Icons.Default.Person,
-                    tint = Cyan,
-                    modifier = modifier.size(spacing.spaceLarge),
-                    contentDescription = stringResource(R.string.icon),
-                )
-            }
-
-        }
-        Text(
-            text = stringResource(R.string.tasks),
-            style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold),
-            color = Color.Black,
-            modifier = Modifier.offset(y = 10.dp)
-        )
-        IconButton(
-            onClick = onAddClick,
-        ) {
+        Row(modifier = Modifier.fillMaxHeight()) {
+            Text(text = "Task Overview")
+            Spacer(modifier = Modifier.padding(47.dp))
             Icon(
                 imageVector = Icons.Default.Add,
-                tint = Cyan,
-                modifier = modifier.size(spacing.spaceLarge),
-                contentDescription = stringResource(R.string.add),
+                contentDescription = stringResource(id = R.string.cancel),
+                modifier = Modifier.clickable {
+                    onAddClick()
+                }
             )
         }
     }

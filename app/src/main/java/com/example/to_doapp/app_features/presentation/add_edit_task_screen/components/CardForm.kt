@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import com.example.to_doapp.ui.theme.LocalSpacing
 
@@ -57,7 +58,7 @@ fun CardForm(
                     onValueChange = onValueChange,
                     keyboardOptions = keyboardOptions,
                     readOnly = !isEditable,
-                    label = {
+                    placeholder = {
                         Text(
                             text = "Enter a $text",
                             style = MaterialTheme.typography.body1,

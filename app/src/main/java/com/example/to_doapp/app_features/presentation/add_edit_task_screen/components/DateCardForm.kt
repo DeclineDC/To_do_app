@@ -1,5 +1,6 @@
 package com.example.to_doapp.app_features.presentation.add_edit_task_screen.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -21,6 +22,7 @@ fun DateCardForm(
     isEditable: Boolean,
     onValueChange: (String) -> Unit,
     keyboardOptions: KeyboardOptions,
+    onDateSelect: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
 
@@ -63,7 +65,10 @@ fun DateCardForm(
                         Icon(
                             imageVector = Icons.Default.DateRange,
                             contentDescription = null,
-                            tint = MaterialTheme.colors.secondary
+                            tint = MaterialTheme.colors.secondary,
+                            modifier = Modifier.clickable {
+                                onDateSelect()
+                            }
                         )
                     },
                     colors = TextFieldDefaults.textFieldColors(

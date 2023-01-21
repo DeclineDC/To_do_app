@@ -9,6 +9,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -50,10 +52,20 @@ fun TaskOverviewScreen(
         ) {
             TaskOverviewTopBar(onAddClick = { navController.navigate(Screen.AddEditTaskScreen.route) })
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
-            Text(text = "Tasks today", modifier = Modifier.padding(spacing.space12), fontWeight = FontWeight.Bold, color = MaterialTheme.colors.onPrimary)
+            Text(
+                text = "Tasks today",
+                modifier = Modifier.padding(spacing.space12),
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colors.onPrimary
+            )
             TasksContainer(viewModel = viewModel)
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
-            Text(text = "All tasks", modifier = Modifier.padding(spacing.space12), fontWeight = FontWeight.Bold, color = MaterialTheme.colors.onPrimary)
+            Text(
+                text = "All tasks",
+                modifier = Modifier.padding(spacing.space12),
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colors.onPrimary
+            )
             TasksContainer(viewModel = viewModel)
 
 

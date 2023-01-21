@@ -9,19 +9,19 @@ import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
-    primary = Color.White,
-    onPrimary = Color.LightGray,
-    primaryVariant = LightPurple,
+    primary = SurfaceBlack,
+    onPrimary = Color.White,
+    primaryVariant = Color.LightGray,
     secondary = Cyan,
-    surface = SurfaceWhite,
+    surface = Color.Black,
     onSurface = Color.Black,
     onBackground = Color.Black
 )
 
 private val LightColorPalette = lightColors(
     primary = Color.White,
-    onPrimary = Color.LightGray,
-    primaryVariant = LightPurple,
+    onPrimary = Color.Black,
+    primaryVariant = Color.LightGray,
     secondary = Cyan,
     surface = SurfaceWhite,
     onSurface = Color.Black,
@@ -47,7 +47,7 @@ fun ToDoAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composabl
 
     val systemUiController = rememberSystemUiController()
     systemUiController.setStatusBarColor(
-        color = Color.White
+        color = if (!darkTheme) Color.White else Color(0xFF181818)
     )
 
     MaterialTheme(

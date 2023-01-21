@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -23,6 +24,7 @@ import androidx.navigation.NavController
 import com.example.to_doapp.R
 import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TaskItem
 import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TaskOverviewTopBar
+import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TasksContainer
 import com.example.to_doapp.app_features.presentation.util.Screen
 import com.example.to_doapp.ui.theme.LocalSpacing
 
@@ -47,17 +49,14 @@ fun TaskOverviewScreen(
                 .background(MaterialTheme.colors.surface)
         ) {
             TaskOverviewTopBar(onAddClick = { navController.navigate(Screen.AddEditTaskScreen.route) })
-            Divider(thickness = 2.dp, modifier = Modifier.shadow(elevation = 1.dp))
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                items(viewModel.state.tasks) { task ->
-                    TaskItem(
-                        task = task,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(MaterialTheme.colors.surface)
-                    )
-                }
-            }
+            Spacer(modifier = Modifier.padding(spacing.spaceSmall))
+            Text(text = "Tasks today", modifier = Modifier.padding(spacing.space12), fontWeight = FontWeight.Bold, color = MaterialTheme.colors.onPrimary)
+            TasksContainer(viewModel = viewModel)
+            Spacer(modifier = Modifier.padding(spacing.spaceSmall))
+            Text(text = "All tasks", modifier = Modifier.padding(spacing.space12), fontWeight = FontWeight.Bold, color = MaterialTheme.colors.onPrimary)
+            TasksContainer(viewModel = viewModel)
+
+
         }
 
     }

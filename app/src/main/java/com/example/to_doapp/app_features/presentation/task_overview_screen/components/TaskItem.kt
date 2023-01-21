@@ -3,10 +3,18 @@ package com.example.to_doapp.app_features.presentation.task_overview_screen.comp
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.to_doapp.app_features.domain.model.Task
 import com.example.to_doapp.ui.theme.LocalSpacing
@@ -18,41 +26,70 @@ fun TaskItem(
 ) {
     val spacing = LocalSpacing.current
 
-    Column(
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier
-            .background(MaterialTheme.colors.surface)
             .fillMaxSize()
+            .background(color = MaterialTheme.colors.primary)
     ) {
-        Row(
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth(.7f)
                 .padding(
                     start = spacing.spaceMedium,
                     end = spacing.spaceMedium,
                     bottom = spacing.spaceSmall,
                     top = spacing.spaceSmall
-                ),
-            horizontalArrangement = Arrangement.SpaceBetween
+                )
+                .background(color = MaterialTheme.colors.primary)
         ) {
-            Text(text = task.title, style = MaterialTheme.typography.body1)
             Text(
-                modifier = Modifier.offset(y = 12.dp),
-                text = "${task.description}"
+                text = task.title,
+                style = MaterialTheme.typography.body1,
+                color = MaterialTheme.colors.onPrimary
+            )
+            Text(
+                text = "${task.description}",
+                style = MaterialTheme.typography.body2,
+                color = MaterialTheme.colors.primaryVariant,
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .offset(x = 2.dp)
             )
         }
-        Row(
+
+
+
+
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = spacing.spaceMedium, bottom = spacing.spaceSmall),
-            horizontalArrangement = Arrangement.Start
+                .fillMaxSize()
+                .padding(
+                    start = spacing.spaceMedium,
+                    end = spacing.spaceMedium,
+                    bottom = 18.5.dp,
+                    top = 18.5.dp
+                )
+                .background(color = MaterialTheme.colors.primary)
         ) {
-            Text(
-                text = "" /*"${task.dayOfMonth}" + "/${task.month}" + "/${task.year}"*/,
-                style = MaterialTheme.typography.h5
-            )
+            Row(
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(color = MaterialTheme.colors.primary),
+
+                ) {
+                Text(text = "Jan 21", style = MaterialTheme.typography.body1, color = MaterialTheme.colors.onPrimary)
+                Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
+                Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = null, tint = MaterialTheme.colors.secondary)
+            }
+
+
         }
-        Divider(thickness = .5.dp)
+
     }
+    Divider(thickness = .5.dp)
 
 
 }

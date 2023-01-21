@@ -32,6 +32,11 @@ fun AddEditButton(
             .fillMaxWidth()
             .padding(spacing.space12)
     ) {
-        Text(text = text, color = White, modifier = Modifier.padding(spacing.spaceExtraSmall))
+        Text(
+            text = text,
+            color = White,
+            modifier = Modifier.padding(spacing.spaceExtraSmall),
+            style = MaterialTheme.typography.body1
+        )
     }
 }

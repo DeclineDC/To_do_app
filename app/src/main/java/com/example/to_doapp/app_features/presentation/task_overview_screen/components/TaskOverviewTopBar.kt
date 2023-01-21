@@ -1,5 +1,6 @@
 package com.example.to_doapp.app_features.presentation.task_overview_screen.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,11 +13,14 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.to_doapp.R
@@ -31,7 +35,7 @@ fun TaskOverviewTopBar(
     val spacing = LocalSpacing.current
 
     Row(
-        horizontalArrangement = Arrangement.End,
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Bottom,
         modifier = modifier
             .fillMaxWidth()
@@ -39,17 +43,19 @@ fun TaskOverviewTopBar(
             .background(color = MaterialTheme.colors.primary)
             .padding(start = 12.dp, top = 32.dp, end = 12.dp, bottom = 12.dp)
     ) {
-        Row(modifier = Modifier.fillMaxHeight()) {
-            Text(text = "Task Overview")
-            Spacer(modifier = Modifier.padding(47.dp))
-            Icon(
-                imageVector = Icons.Default.Add,
-                contentDescription = stringResource(id = R.string.cancel),
-                modifier = Modifier.clickable {
-                    onAddClick()
-                }
-            )
-        }
+        Image(painter = painterResource(id = R.drawable.app_logo), contentDescription = null )
+        Text(
+            text = "Tasks",
+            style = MaterialTheme.typography.h3,
+            color = MaterialTheme.colors.onPrimary
+        )
+        Icon(
+            imageVector = Icons.Default.Add,
+            contentDescription = stringResource(id = R.string.cancel),
+            tint = MaterialTheme.colors.secondary,
+            modifier = Modifier.clickable {
+                onAddClick()
+            }
+        )
     }
-
 }

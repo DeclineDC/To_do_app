@@ -1,9 +1,7 @@
 package com.example.to_doapp.app_features.presentation.add_edit_task_screen.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
-import androidx.compose.material.Switch
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,9 +36,18 @@ fun SwitchRow(
             Text(
                 text = "Send Notifications",
                 modifier = Modifier.offset(y = 10.dp),
-                style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
+                style = MaterialTheme.typography.body1
             )
-            Switch(checked = isChecked, onCheckedChange = onCheckedChange)
+            Switch(
+                checked = isChecked,
+                onCheckedChange = onCheckedChange,
+                colors = SwitchDefaults.colors(
+                    checkedTrackColor = MaterialTheme.colors.secondary,
+                    checkedThumbColor = Color.White,
+                    uncheckedThumbColor = Color.White,
+                    uncheckedTrackColor = Color.LightGray,
+                )
+            )
 
         }
         Divider(
@@ -61,9 +68,18 @@ fun SwitchRow(
             Text(
                 text = "Repeat Task",
                 modifier = Modifier.offset(y = 10.dp),
-                style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
+                style = MaterialTheme.typography.body1
             )
-            Switch(checked = isChecked, onCheckedChange = onCheckedChange)
+            Switch(
+                checked = true,
+                onCheckedChange = onCheckedChange,
+                colors = SwitchDefaults.colors(
+                    checkedTrackColor = MaterialTheme.colors.secondary,
+                    checkedThumbColor = Color.White,
+                    uncheckedThumbColor = Color.White,
+                    uncheckedTrackColor = Color.LightGray
+                )
+            )
 
         }
     }

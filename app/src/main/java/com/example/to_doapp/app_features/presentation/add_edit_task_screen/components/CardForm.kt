@@ -5,6 +5,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,13 +46,24 @@ fun CardForm(
                         bottom = spacing.spaceSmall
                     )
             ) {
-                Text(text = text, modifier = Modifier.offset(x = 13.dp))
+                Text(
+                    text = text,
+                    modifier = Modifier.offset(x = 14.dp),
+                    style = MaterialTheme.typography.body2,
+                    color = MaterialTheme.colors.primaryVariant
+                )
                 TextField(
                     value = value,
                     onValueChange = onValueChange,
                     keyboardOptions = keyboardOptions,
                     readOnly = !isEditable,
-                    textStyle = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold),
+                    label = {
+                        Text(
+                            text = "Enter a $text",
+                            style = MaterialTheme.typography.body1,
+                            color = MaterialTheme.colors.onPrimary
+                        )
+                    },
                     singleLine = true,
                     colors = TextFieldDefaults.textFieldColors(
                         backgroundColor = MaterialTheme.colors.primary,

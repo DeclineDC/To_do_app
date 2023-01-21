@@ -42,11 +42,12 @@ fun AddEditTaskTopBar(
             .padding(start = 12.dp, top = 32.dp, end = 12.dp, bottom = 12.dp)
     ) {
         Row(modifier = Modifier.fillMaxHeight()) {
-            Text(text = if (isExistingTask) "Edit task" else "New task")
+            Text(text = if (isExistingTask) "Edit task" else "New task", style = MaterialTheme.typography.h2, color = MaterialTheme.colors.onPrimary)
             Spacer(modifier = Modifier.padding(56.dp))
             Icon(
                 imageVector = Icons.Default.Close,
                 contentDescription = stringResource(id = R.string.cancel),
+                tint = MaterialTheme.colors.onPrimary,
                 modifier = Modifier.clickable {
                     onCancelClick()
                 }

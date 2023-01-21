@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.Composable
@@ -45,18 +46,24 @@ fun DateCardForm(
                         bottom = spacing.spaceSmall
                     )
             ) {
-                Text(text = "Task Due By", modifier = Modifier.offset(x = 13.dp))
+                Text(
+                    text = "Task Due By",
+                    modifier = Modifier.offset(x = 13.dp),
+                    style = MaterialTheme.typography.body2,
+                    color = MaterialTheme.colors.primaryVariant
+                )
                 TextField(
-                    value = value,
+                    value = "21/01/2023",
                     onValueChange = onValueChange,
                     keyboardOptions = keyboardOptions,
                     readOnly = !isEditable,
                     singleLine = true,
-                    textStyle = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold),
+                    textStyle = MaterialTheme.typography.body1,
                     trailingIcon = {
                         Icon(
                             imageVector = Icons.Default.DateRange,
-                            contentDescription = null
+                            contentDescription = null,
+                            tint = MaterialTheme.colors.secondary
                         )
                     },
                     colors = TextFieldDefaults.textFieldColors(

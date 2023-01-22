@@ -46,16 +46,13 @@ fun AddEditTaskScreen(
     var selectedDate by remember {
         mutableStateOf(LocalDate.now())
     }
-    var selectedTime by remember {
-        mutableStateOf(LocalTime.NOON)
-    }
-    val formattedDate by remember {
+    /*val formattedDate by remember {
         derivedStateOf {
             DateTimeFormatter
-                .ofPattern("MMM dd yyyy")
+                .ofPattern("dd/MM/uuuu")
                 .format(selectedDate)
         }
-    }
+    }*/
 
     val dateDialogState = rememberMaterialDialogState()
 
@@ -65,7 +62,18 @@ fun AddEditTaskScreen(
             buttons = {
                 positiveButton(
                     text = "Ok",
-                    textStyle = TextStyle(color = MaterialTheme.colors.onPrimary)
+                    textStyle = TextStyle(color = MaterialTheme.colors.onPrimary),
+                    onClick = {
+                        viewModel.onEvent(
+                            AddEditTaskEvent.OnDateChange(
+                                localDate = LocalDate.of(
+                                    selectedDate.year,
+                                    selectedDate.monthValue,
+                                    selectedDate.dayOfMonth
+                                )
+                            )
+                        )
+                    }
                 )
                 negativeButton(
                     text = "Cancel",
@@ -140,7 +148,7 @@ fun AddEditTaskScreen(
             )
 
             DateCardForm(
-                value = "21/01/2023",
+                value = parseDate(date = viewModel.state.date),
                 isEditable = false,
                 onValueChange = {},
                 keyboardOptions = KeyboardOptions(),

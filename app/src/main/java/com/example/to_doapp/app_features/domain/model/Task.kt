@@ -10,7 +10,7 @@ data class Task(
     val day: Int = 0,
     val month: Int = 0,
     val year: Int = 0,
-    val isTaskRepeatable: Boolean = false,
-    val isTaskNotifying: Boolean = false,
+    val isTaskRepeatable: Boolean,
+    val isTaskNotifying: Boolean,
     @PrimaryKey val id: Int? = null
 )

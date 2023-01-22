@@ -21,6 +21,7 @@ import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
 fun TaskItem(
+    date: String,
     task: Task,
     modifier: Modifier = Modifier
 ) {
@@ -80,7 +81,7 @@ fun TaskItem(
                     .background(color = MaterialTheme.colors.primary),
 
                 ) {
-                Text(text = "Jan 21", style = MaterialTheme.typography.body1, color = MaterialTheme.colors.onPrimary)
+                Text(text = date, style = MaterialTheme.typography.body1, color = MaterialTheme.colors.onPrimary)
                 Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
                 Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = null, tint = MaterialTheme.colors.secondary)
             }

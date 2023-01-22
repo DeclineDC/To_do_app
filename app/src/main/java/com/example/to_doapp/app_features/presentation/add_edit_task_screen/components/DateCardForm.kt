@@ -55,7 +55,7 @@ fun DateCardForm(
                     color = MaterialTheme.colors.primaryVariant
                 )
                 TextField(
-                    value = "21/01/2023",
+                    value = value,
                     onValueChange = onValueChange,
                     keyboardOptions = keyboardOptions,
                     readOnly = !isEditable,

@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.parseDate
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewViewModel
 import com.example.to_doapp.ui.theme.LocalSpacing
 
@@ -36,6 +37,11 @@ fun TasksContainer(
             LazyColumn(modifier = Modifier.height(190.dp)) {
                 items(viewModel.state.tasks) { task ->
                     TaskItem(
+                        date = parseDateForTaskItem(
+                            day = task.day,
+                            month = task.month,
+                            Year = task.year
+                        ),
                         task = task,
                         modifier = Modifier
                             .fillMaxWidth()

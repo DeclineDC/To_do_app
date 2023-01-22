@@ -42,8 +42,7 @@ class AddEditTaskViewModel @Inject constructor(
                                 month = state.date.monthValue,
                                 year = state.date.year,
                                 isTaskRepeatable = state.isRepeatableSwitchSelected,
-                                isTaskNotifying = state.isNotifyingSwitchSelected,
-                                id = -1
+                                isTaskNotifying = state.isNotifyingSwitchSelected
                             )
                         )
                         _eventFlow.emit(UiEvent.SaveTask)

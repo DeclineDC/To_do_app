@@ -5,9 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,6 +16,7 @@ import androidx.navigation.NavController
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.AddEditTaskEvent
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.AddEditTaskViewModel
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.AddEditTaskTopBar
+import com.example.to_doapp.app_features.presentation.task_detail_screen.components.IconRow
 import com.example.to_doapp.app_features.presentation.task_detail_screen.components.TaskDetailButton
 import com.example.to_doapp.app_features.presentation.task_detail_screen.components.TaskDetailCard
 import com.example.to_doapp.app_features.presentation.task_detail_screen.components.TaskDetailTopBar
@@ -52,8 +51,10 @@ fun TaskDetailScreen(
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
 
             TaskDetailCard()
-
-            Spacer(modifier = Modifier.padding(spacing.spaceExtraLarge))
+            Spacer(modifier = Modifier.padding(spacing.space12))
+            IconRow(icon = Icons.Default.Refresh, text = "Repeating")
+            IconRow(icon = Icons.Default.Notifications, text = "Notifying")
+            Spacer(modifier = Modifier.padding(spacing.spaceLarge))
 
             Row(Modifier.fillMaxWidth()) {
                 TaskDetailButton(
@@ -72,7 +73,12 @@ fun TaskDetailScreen(
                 )
             }
 
-            TaskDetailButton(text = "Complete Task", onClick = { /*TODO*/ }, width = 1f, icon = Icons.Default.Check)
+            TaskDetailButton(
+                text = "Complete Task",
+                onClick = { /*TODO*/ },
+                width = 1f,
+                icon = Icons.Default.Check
+            )
 
 
         }

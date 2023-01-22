@@ -92,6 +92,9 @@ fun AddEditTaskScreen(
                 is UiEvent.SaveTask -> {
                     navController.navigate(Screen.TaskOverviewScreen.route)
                 }
+                UiEvent.OnCancelClick -> {
+                    navController.navigate(Screen.TaskOverviewScreen.route)
+                }
             }
         }
     }
@@ -103,7 +106,7 @@ fun AddEditTaskScreen(
             AddEditTaskTopBar(
                 onAddClick = {},
                 onDeleteClick = {},
-                onCancelClick = { navController.navigate(Screen.TaskOverviewScreen.route) })
+                onCancelClick = { viewModel.onEvent(AddEditTaskEvent.OnCancelClick) })
         }
     ) { padding ->
         Column(

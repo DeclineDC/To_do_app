@@ -72,9 +72,21 @@ class AddEditTaskViewModel @Inject constructor(
                     _eventFlow.emit(UiEvent.OnCancelClick)
                 }
             }
-            is AddEditTaskEvent.OnDateChange -> {}
-            is AddEditTaskEvent.OnNotifyingSelected -> {}
-            is AddEditTaskEvent.OnRepeatableSelected -> {}
+            is AddEditTaskEvent.OnDateChange -> {
+                state = state.copy(
+                    date = event.localDate
+                )
+            }
+            is AddEditTaskEvent.OnNotifyingSelected -> {
+                state = state.copy(
+                    isNotifyingSwitchSelected = true
+                )
+            }
+            is AddEditTaskEvent.OnRepeatableSelected -> {
+                state = state.copy(
+                    isRepeatableSwitchSelected = true
+                )
+            }
         }
     }
 }

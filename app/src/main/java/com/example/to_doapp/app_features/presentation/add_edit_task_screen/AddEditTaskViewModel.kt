@@ -1,5 +1,7 @@
 package com.example.to_doapp.app_features.presentation.add_edit_task_screen
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -26,6 +28,7 @@ class AddEditTaskViewModel @Inject constructor(
     var state by mutableStateOf(AddEditTaskState())
         private set
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun onEvent(event: AddEditTaskEvent) {
         when (event) {
             is AddEditTaskEvent.OnSaveTask -> {
@@ -34,7 +37,13 @@ class AddEditTaskViewModel @Inject constructor(
                         taskUseCases.addTask(
                             Task(
                                 title = state.title,
-                                description = state.description
+                                description = state.description,
+                                dayOfMonth = state.date.dayOfMonth,
+                                month = state.date.monthValue,
+                                year = state.date.year,
+                                isTaskRepeatable = state.isRepeatableSwitchSelected,
+                                isTaskNotifying = state.isNotifyingSwitchSelected,
+                                id = -1
                             )
                         )
                         _eventFlow.emit(UiEvent.SaveTask)
@@ -58,6 +67,14 @@ class AddEditTaskViewModel @Inject constructor(
                     title = event.value
                 )
             }
+            is AddEditTaskEvent.OnCancelClick -> {
+                viewModelScope.launch {
+                    _eventFlow.emit(UiEvent.OnCancelClick)
+                }
+            }
+            is AddEditTaskEvent.OnDateChange -> {}
+            is AddEditTaskEvent.OnNotifyingSelected -> {}
+            is AddEditTaskEvent.OnRepeatableSelected -> {}
         }
     }
 }

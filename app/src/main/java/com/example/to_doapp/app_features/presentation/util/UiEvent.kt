@@ -6,4 +6,6 @@ sealed class UiEvent {
 
     object SaveTask : UiEvent()
 
+    object OnCancelClick : UiEvent()
+
 }

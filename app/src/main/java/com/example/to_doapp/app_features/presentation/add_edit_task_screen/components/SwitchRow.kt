@@ -13,8 +13,11 @@ import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
 fun SwitchRow(
-    isChecked: Boolean,
-    onCheckedChange: (Boolean) -> Unit
+    isNotifyingChecked: Boolean,
+    onNotifyingCheckedChange: (Boolean) -> Unit,
+    isRepeatableChecked: Boolean,
+    onRepeatableCheckedChange: (Boolean) -> Unit,
+    modifier: Modifier = Modifier
 ) {
 
     val spacing = LocalSpacing.current
@@ -39,8 +42,8 @@ fun SwitchRow(
                 style = MaterialTheme.typography.body1
             )
             Switch(
-                checked = isChecked,
-                onCheckedChange = onCheckedChange,
+                checked = isNotifyingChecked,
+                onCheckedChange = onNotifyingCheckedChange,
                 colors = SwitchDefaults.colors(
                     checkedTrackColor = MaterialTheme.colors.secondary,
                     checkedThumbColor = Color.White,
@@ -71,8 +74,8 @@ fun SwitchRow(
                 style = MaterialTheme.typography.body1
             )
             Switch(
-                checked = true,
-                onCheckedChange = onCheckedChange,
+                checked = isRepeatableChecked,
+                onCheckedChange = onRepeatableCheckedChange,
                 colors = SwitchDefaults.colors(
                     checkedTrackColor = MaterialTheme.colors.secondary,
                     checkedThumbColor = Color.White,

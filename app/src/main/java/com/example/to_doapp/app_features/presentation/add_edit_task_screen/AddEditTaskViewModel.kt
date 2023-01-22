@@ -78,14 +78,27 @@ class AddEditTaskViewModel @Inject constructor(
                 )
             }
             is AddEditTaskEvent.OnNotifyingSelected -> {
-                state = state.copy(
-                    isNotifyingSwitchSelected = true
-                )
+                state = if (!state.isNotifyingSwitchSelected) {
+                    state.copy(
+                        isNotifyingSwitchSelected = true
+                    )
+                } else {
+                    state.copy(
+                        isNotifyingSwitchSelected = false
+                    )
+                }
+
             }
             is AddEditTaskEvent.OnRepeatableSelected -> {
-                state = state.copy(
-                    isRepeatableSwitchSelected = true
-                )
+                state = if (!state.isRepeatableSwitchSelected) {
+                    state.copy(
+                        isRepeatableSwitchSelected = true
+                    )
+                } else {
+                    state.copy(
+                        isRepeatableSwitchSelected = false
+                    )
+                }
             }
         }
     }

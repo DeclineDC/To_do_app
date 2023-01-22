@@ -40,6 +40,8 @@ fun AddEditTaskScreen(
 
     val scaffoldState = rememberScaffoldState()
     val spacing = LocalSpacing.current
+    val isRepeatableSelected = viewModel.state.isRepeatableSwitchSelected
+    val isNotifyingSelected = viewModel.state.isNotifyingSwitchSelected
 
     var selectedDate by remember {
         mutableStateOf(LocalDate.now())
@@ -144,7 +146,12 @@ fun AddEditTaskScreen(
                 keyboardOptions = KeyboardOptions(),
                 onDateSelect = { dateDialogState.show() }
             )
-            SwitchCardForm()
+            SwitchCardForm(
+                isNotifyingChecked = isNotifyingSelected,
+                onNotifyingCheckedChange = { viewModel.onEvent(AddEditTaskEvent.OnNotifyingSelected) },
+                isRepeatableChecked = isRepeatableSelected,
+                onRepeatableCheckedChange = { viewModel.onEvent(AddEditTaskEvent.OnRepeatableSelected) }
+            )
             AddEditButton(
                 text = stringResource(R.string.save_task),
                 onClick = { viewModel.onEvent(AddEditTaskEvent.OnSaveTask) })

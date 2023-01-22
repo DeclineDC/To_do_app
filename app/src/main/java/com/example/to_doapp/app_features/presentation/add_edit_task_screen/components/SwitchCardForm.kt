@@ -10,6 +10,10 @@ import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
 fun SwitchCardForm(
+    isNotifyingChecked: Boolean,
+    onNotifyingCheckedChange: (Boolean) -> Unit,
+    isRepeatableChecked: Boolean,
+    onRepeatableCheckedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -26,7 +30,12 @@ fun SwitchCardForm(
             backgroundColor = MaterialTheme.colors.primary,
         ) {
 
-            SwitchRow(isChecked = false, onCheckedChange = {})
+            SwitchRow(
+                isNotifyingChecked = isNotifyingChecked,
+                onNotifyingCheckedChange = onNotifyingCheckedChange,
+                isRepeatableChecked = isRepeatableChecked,
+                onRepeatableCheckedChange = onRepeatableCheckedChange
+            )
 
         }
 

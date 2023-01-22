@@ -1,6 +1,7 @@
 package com.example.to_doapp.app_features.presentation.task_overview_screen.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,6 +21,7 @@ import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
 fun TasksContainer(
+    onTaskSelect: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TaskOverviewViewModel
 ) {
@@ -46,6 +48,9 @@ fun TasksContainer(
                         modifier = Modifier
                             .fillMaxWidth()
                             .background(Color.White)
+                            .clickable {
+                                onTaskSelect()
+                            }
                     )
                 }
             }

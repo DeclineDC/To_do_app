@@ -1,8 +1,10 @@
 package com.example.to_doapp
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -14,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.AddEditTaskScreen
+import com.example.to_doapp.app_features.presentation.task_detail_screen.TaskDetailScreen
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewScreen
 import com.example.to_doapp.app_features.presentation.util.Screen
 import com.example.to_doapp.ui.theme.LocalSpacing
@@ -22,6 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -48,6 +52,11 @@ class MainActivity : ComponentActivity() {
                             route = Screen.AddEditTaskScreen.route
                         ) {
                             AddEditTaskScreen(navController = navController)
+                        }
+                        composable(
+                            route = Screen.TaskDetailScreen.route
+                        ) {
+                            TaskDetailScreen(navController = navController)
                         }
                     }
 

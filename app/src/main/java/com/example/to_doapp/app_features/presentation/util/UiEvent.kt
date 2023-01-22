@@ -8,4 +8,5 @@ sealed class UiEvent {
 
     object OnCancelClick : UiEvent()
 
+
 }

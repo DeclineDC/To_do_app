@@ -8,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -25,7 +26,9 @@ import com.example.to_doapp.app_features.presentation.task_overview_screen.compo
 import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TaskOverviewTopBar
 import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TasksContainer
 import com.example.to_doapp.app_features.presentation.util.Screen
+import com.example.to_doapp.app_features.presentation.util.UiEvent
 import com.example.to_doapp.ui.theme.LocalSpacing
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun TaskOverviewScreen(
@@ -35,6 +38,7 @@ fun TaskOverviewScreen(
 
     val spacing = LocalSpacing.current
     val scaffoldState = rememberScaffoldState()
+
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -55,7 +59,8 @@ fun TaskOverviewScreen(
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.onPrimary
             )
-            TasksContainer(viewModel = viewModel)
+            TasksContainer(viewModel = viewModel,
+                onTaskSelect = { navController.navigate(Screen.TaskDetailScreen.route) })
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
             Text(
                 text = "All tasks",
@@ -63,9 +68,9 @@ fun TaskOverviewScreen(
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.onPrimary
             )
-            TasksContainer(viewModel = viewModel)
-
-
+            TasksContainer(
+                viewModel = viewModel,
+                onTaskSelect = { navController.navigate(Screen.TaskDetailScreen.route) })
         }
 
     }

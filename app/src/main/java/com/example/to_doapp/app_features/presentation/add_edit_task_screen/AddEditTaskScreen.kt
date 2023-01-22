@@ -61,8 +61,14 @@ fun AddEditTaskScreen(
         MaterialDialog(
             dialogState = dateDialogState,
             buttons = {
-                positiveButton(text = "Ok", textStyle = TextStyle(color = MaterialTheme.colors.onPrimary))
-                negativeButton(text = "Cancel", textStyle = TextStyle(color = MaterialTheme.colors.onPrimary))
+                positiveButton(
+                    text = "Ok",
+                    textStyle = TextStyle(color = MaterialTheme.colors.onPrimary)
+                )
+                negativeButton(
+                    text = "Cancel",
+                    textStyle = TextStyle(color = MaterialTheme.colors.onPrimary)
+                )
             }
         ) {
             datepicker(
@@ -90,7 +96,16 @@ fun AddEditTaskScreen(
         }
     }
 
-    Scaffold(scaffoldState = scaffoldState, modifier = Modifier.fillMaxSize()) { padding ->
+    Scaffold(
+        scaffoldState = scaffoldState,
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+            AddEditTaskTopBar(
+                onAddClick = {},
+                onDeleteClick = {},
+                onCancelClick = { navController.navigate(Screen.TaskOverviewScreen.route) })
+        }
+    ) { padding ->
         Column(
             Modifier
                 .fillMaxWidth()
@@ -99,10 +114,7 @@ fun AddEditTaskScreen(
                 .background(MaterialTheme.colors.surface)
 
         ) {
-            AddEditTaskTopBar(
-                onAddClick = {},
-                onDeleteClick = {},
-                onCancelClick = { navController.navigate(Screen.TaskOverviewScreen.route) })
+
 
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
 

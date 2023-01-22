@@ -1,7 +1,6 @@
 package com.example.to_doapp.app_features.presentation.task_overview_screen
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
@@ -9,8 +8,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -41,7 +38,8 @@ fun TaskOverviewScreen(
 
     Scaffold(
         scaffoldState = scaffoldState,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        topBar = { TaskOverviewTopBar(onAddClick = { navController.navigate(Screen.AddEditTaskScreen.route) }) }
     ) { padding ->
         Column(
             Modifier
@@ -50,7 +48,6 @@ fun TaskOverviewScreen(
                 .padding(padding)
                 .background(MaterialTheme.colors.surface)
         ) {
-            TaskOverviewTopBar(onAddClick = { navController.navigate(Screen.AddEditTaskScreen.route) })
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
             Text(
                 text = "Tasks today",

@@ -60,14 +60,14 @@ fun TaskDetailScreen(
                     text = "Edit Task",
                     onClick = { /*TODO*/ },
                     width = .5f,
-                    color = Color(0XFF33AFD3),
+                    color = MaterialTheme.colors.primaryVariant/*Color(0XFF33AFD3)*/,
                     icon = Icons.Default.Edit
                 )
                 TaskDetailButton(
                     text = "Delete Task",
                     onClick = { /*TODO*/ },
                     width = 1f,
-                    color = Color(0XFFc70000),
+                    color = Color(0XFFe07575),
                     icon = Icons.Default.Delete
                 )
             }

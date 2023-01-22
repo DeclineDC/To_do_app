@@ -6,7 +6,9 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.to_doapp.ui.theme.LocalSpacing
 
@@ -32,17 +34,39 @@ fun TaskDetailCard() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        start = spacing.space12,
-                        end = spacing.space12,
+                        start = spacing.spaceMedium,
+                        end = spacing.spaceMedium,
                         top = spacing.space12,
-                        bottom = spacing.spaceSmall
+                        bottom = spacing.spaceMedium
                     )
             ) {
                 Row(Modifier.fillMaxWidth()) {
-                    Text(text = "Title")
+                    Text(text = "Title", style = MaterialTheme.typography.h4)
                 }
+                Spacer(modifier = Modifier.padding(spacing.spaceSmall))
                 Row(Modifier.fillMaxWidth()) {
-                    Text(text = "This is where the description of the selected task will go, just writing this for design purposes.")
+                    Text(
+                        text = "This is where the description of the selected task will go, just writing this for design purposes.",
+                        style = MaterialTheme.typography.body1,
+                        fontWeight = FontWeight.Normal,
+                        modifier = Modifier.offset(x = 5.dp)
+                    )
+                }
+                Column(
+                    verticalArrangement = Arrangement.Bottom,
+                    horizontalAlignment = Alignment.End,
+                    modifier = Modifier.fillMaxHeight().fillMaxWidth()
+                ) {
+                    Text(
+                        text = "Due by",
+                        style = MaterialTheme.typography.body1,
+                        fontWeight = FontWeight.Normal
+                    )
+                    Text(
+                        text = "22/01/2023",
+                        style = MaterialTheme.typography.body1,
+                        fontWeight = FontWeight.Normal
+                    )
                 }
             }
         }

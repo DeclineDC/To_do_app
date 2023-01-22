@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 data class Task(
     val title: String,
     val description: String,
-    val dayOfMonth: Int,
-    val month: Int,
-    val year: Int,
-    val isTaskRepeatable: Boolean,
-    val isTaskNotifying: Boolean,
+    val day: Int = 0,
+    val month: Int = 0,
+    val year: Int = 0,
+    val isTaskRepeatable: Boolean = false,
+    val isTaskNotifying: Boolean = false,
     @PrimaryKey val id: Int? = null
 )

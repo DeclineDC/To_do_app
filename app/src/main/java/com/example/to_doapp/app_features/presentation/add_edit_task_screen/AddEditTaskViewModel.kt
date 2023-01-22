@@ -38,7 +38,7 @@ class AddEditTaskViewModel @Inject constructor(
                             Task(
                                 title = state.title,
                                 description = state.description,
-                                dayOfMonth = state.date.dayOfMonth,
+                                day = state.date.dayOfMonth,
                                 month = state.date.monthValue,
                                 year = state.date.year,
                                 isTaskRepeatable = state.isRepeatableSwitchSelected,

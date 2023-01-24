@@ -11,5 +11,6 @@ data class TaskDetailState(
     val month: Int = 0,
     val year: Int = 0,
     val isTaskRepeatable: Boolean = false,
-    val isTaskNotifying: Boolean = false
+    val isTaskNotifying: Boolean = false,
+    val isTaskCompleted: Boolean = false,
 )

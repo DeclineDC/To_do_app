@@ -22,9 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.to_doapp.R
-import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TaskItem
-import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TaskOverviewTopBar
-import com.example.to_doapp.app_features.presentation.task_overview_screen.components.TasksContainer
+import com.example.to_doapp.app_features.presentation.task_overview_screen.components.*
 import com.example.to_doapp.app_features.presentation.util.Screen
 import com.example.to_doapp.app_features.presentation.util.UiEvent
 import com.example.to_doapp.ui.theme.LocalSpacing
@@ -76,7 +74,7 @@ fun TaskOverviewScreen(
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.onPrimary
             )
-            TasksContainer(
+            DailyTasksContainer(
                 viewModel = viewModel,
                 navController = navController
             )
@@ -87,7 +85,7 @@ fun TaskOverviewScreen(
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.onPrimary
             )
-            TasksContainer(
+            AllTasksContainer(
                 viewModel = viewModel,
                 navController = navController
             )

@@ -11,11 +11,16 @@ interface TaskDao {
     @Query("SELECT * FROM task WHERE id = :id")
     suspend fun getTaskById(id: Int): Task?
 
-    @Query("SELECT * FROM task")
+    @Query("SELECT * FROM task WHERE isTaskCompleted = 0 ORDER BY day ASC")
     fun getTasks(): Flow<List<Task>>
 
-    @Query("SELECT * FROM task WHERE day = :day AND month = :month AND year = :year")
+    @Query("SELECT * FROM task WHERE day = :day AND month = :month AND year = :year AND isTaskCompleted = 0")
     fun getTasksByDate(day: Int, month: Int, year: Int): Flow<List<Task>>?
+
+    @Query("SELECT * FROM task WHERE isTaskCompleted = 1 ORDER BY day ASC")
+    fun getCompletedTasks(): Flow<List<Task>>
+
+    /*suspend fun getExpiredTasks(): Flow<List<Task>>*/
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTask(task: Task)

@@ -22,6 +22,10 @@ class TaskRepositoryImpl(private val dao: TaskDao) : TaskRepository {
         return dao.getTasksByDate(day, month, year)
     }
 
+    override fun getCompletedTasks(): Flow<List<Task>> {
+        return dao.getCompletedTasks()
+    }
+
     override fun getTasks(): Flow<List<Task>> {
         return dao.getTasks()
     }

@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.to_doapp.app_features.domain.model.Task
 import com.example.to_doapp.app_features.domain.use_case.TaskUseCases
+import com.example.to_doapp.app_features.domain.util.InvalidTaskException
 import com.example.to_doapp.app_features.presentation.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -39,6 +40,7 @@ class TaskDetailViewModel @Inject constructor(
                             description = task.description,
                             day = task.day,
                             month = task.month,
+                            year = task.year,
                             isTaskRepeatable = task.isTaskRepeatable,
                             isTaskNotifying = task.isTaskNotifying
 
@@ -58,7 +60,34 @@ class TaskDetailViewModel @Inject constructor(
                     _eventFlow.emit(UiEvent.OnCancelClick)
                 }
             }
+            TaskDetailEvent.OnCompleteTask -> {
+                viewModelScope.launch {
+                    try {
+                        taskUseCases.addTask(
+                            Task(
+                                title = state.title,
+                                description = state.description,
+                                day = state.day,
+                                month = state.month,
+                                year = state.year,
+                                isTaskRepeatable = state.isTaskRepeatable,
+                                isTaskNotifying = state.isTaskNotifying,
+                                id = state.task?.id,
+                                isTaskCompleted = true
+                            )
+                        )
+                        _eventFlow.emit(UiEvent.OnCancelClick)
+                    } catch (e: InvalidTaskException) {
+                        _eventFlow.emit(
+                            UiEvent.ShowSnackBar(
+                                message = e.message ?: "Couldn't save task"
+                            )
+                        )
 
+                    }
+                }
+
+            }
         }
     }
 

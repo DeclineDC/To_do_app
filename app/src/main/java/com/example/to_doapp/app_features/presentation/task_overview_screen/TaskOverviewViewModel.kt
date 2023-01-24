@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,8 +28,13 @@ class TaskOverviewViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
+    private val localDate = LocalDate.now()
+
     init {
         getAllTasks()
+        viewModelScope.launch {
+            getTasksByDate()
+        }
     }
 
 
@@ -36,9 +42,24 @@ class TaskOverviewViewModel @Inject constructor(
         taskUseCases.getTasks()
             .onEach { tasks ->
                 state = state.copy(
-                    tasks = tasks
+                    allTasks = tasks
                 )
             }
             .launchIn(viewModelScope)
     }
+
+    private suspend fun getTasksByDate() {
+        taskUseCases.getTasksByDate(
+            day = localDate.dayOfMonth,
+            month = localDate.monthValue,
+            year = localDate.year
+        )
+            ?.onEach { tasks ->
+                state = state.copy(
+                    dailyTasks = tasks
+                )
+            }
+            ?.launchIn(viewModelScope)
+    }
+
 }

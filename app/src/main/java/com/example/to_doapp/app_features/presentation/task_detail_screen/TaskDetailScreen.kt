@@ -92,7 +92,7 @@ fun TaskDetailScreen(
 
             TaskDetailButton(
                 text = "Complete Task",
-                onClick = { /*TODO*/ },
+                onClick = { viewModel.onEvent(TaskDetailEvent.OnCompleteTask) },
                 width = 1f,
                 icon = Icons.Default.Check
             )

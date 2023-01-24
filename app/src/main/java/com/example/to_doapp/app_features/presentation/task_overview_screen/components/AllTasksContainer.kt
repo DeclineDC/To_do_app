@@ -8,21 +8,17 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.SnackbarDefaults.backgroundColor
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.parseDate
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewViewModel
 import com.example.to_doapp.app_features.presentation.util.Screen
 import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
-fun TasksContainer(
+fun AllTasksContainer(
     navController: NavController,
     modifier: Modifier = Modifier,
     viewModel: TaskOverviewViewModel
@@ -39,7 +35,7 @@ fun TasksContainer(
     ) {
         Column(modifier = Modifier.background(MaterialTheme.colors.primary)) {
             LazyColumn(modifier = Modifier.height(190.dp)) {
-                items(viewModel.state.tasks) { task ->
+                items(viewModel.state.allTasks) { task ->
                     TaskItem(
                         date = parseDateForTaskItem(
                             day = task.day,

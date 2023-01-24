@@ -27,15 +27,14 @@ class TaskDetailViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
-    var selectedTask: Task? = null
 
     init {
         savedStateHandle.get<Int>("taskId")?.let { taskId ->
             if (taskId != -1) {
                 viewModelScope.launch {
                     taskUseCases.getTask(taskId)?.also { task ->
-                        selectedTask = task
                         state = state.copy(
+                            task = task,
                             title = task.title,
                             description = task.description,
                             day = task.day,

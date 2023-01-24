@@ -1,10 +1,12 @@
 package com.example.to_doapp.app_features.presentation.add_edit_task_screen
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.to_doapp.app_features.domain.model.Task
@@ -19,7 +21,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddEditTaskViewModel @Inject constructor(
-    private val taskUseCases: TaskUseCases
+    private val taskUseCases: TaskUseCases,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
@@ -27,6 +30,31 @@ class AddEditTaskViewModel @Inject constructor(
 
     var state by mutableStateOf(AddEditTaskState())
         private set
+
+    var selectedTask: Task? = null
+    var isExistingTask: Boolean = false
+
+    init {
+        savedStateHandle.get<Int>("taskId")?.let { taskId ->
+            if (taskId != -1) {
+                viewModelScope.launch {
+                    Log.e("Test", "The value of taskId is $taskId")
+                    taskUseCases.getTask(taskId)?.also { task ->
+                        isExistingTask = true
+                        selectedTask = task
+                        state = state.copy(
+                            title = task.title,
+                            description = task.description,
+                            day = task.day,
+                            month = task.month,
+                            isRepeatableSwitchSelected = task.isTaskRepeatable,
+                            isNotifyingSwitchSelected = task.isTaskNotifying
+                        )
+                    }
+                }
+            }
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun onEvent(event: AddEditTaskEvent) {

@@ -76,14 +76,14 @@ fun TaskDetailScreen(
             Row(Modifier.fillMaxWidth()) {
                 TaskDetailButton(
                     text = "Edit Task",
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate(Screen.AddEditTaskScreen.route + "?taskId=${viewModel.state.task?.id}") },
                     width = .5f,
-                    color = MaterialTheme.colors.primaryVariant/*Color(0XFF33AFD3)*/,
+                    color = MaterialTheme.colors.primaryVariant,
                     icon = Icons.Default.Edit
                 )
                 TaskDetailButton(
                     text = "Delete Task",
-                    onClick = { viewModel.onEvent(TaskDetailEvent.OnDeleteTask(viewModel.selectedTask!!)) },
+                    onClick = { viewModel.onEvent(TaskDetailEvent.OnDeleteTask(viewModel.state.task!!)) },
                     width = 1f,
                     color = Color(0XFFe07575),
                     icon = Icons.Default.Delete

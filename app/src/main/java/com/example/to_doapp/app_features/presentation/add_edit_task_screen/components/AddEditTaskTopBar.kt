@@ -23,8 +23,6 @@ import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
 fun AddEditTaskTopBar(
-    onAddClick: () -> Unit,
-    onDeleteClick: () -> Unit,
     onCancelClick: () -> Unit,
     isExistingTask: Boolean = false,
     modifier: Modifier = Modifier

@@ -4,6 +4,7 @@ import com.example.to_doapp.app_features.domain.model.Task
 import java.time.LocalDate
 
 data class TaskDetailState(
+    val task: Task? = null,
     val title: String = "",
     val description: String = "",
     val day: Int = 0,

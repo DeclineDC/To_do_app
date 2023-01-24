@@ -51,7 +51,16 @@ class MainActivity : ComponentActivity() {
                             TaskOverviewScreen(navController = navController)
                         }
                         composable(
-                            route = Screen.AddEditTaskScreen.route
+                            route = Screen.AddEditTaskScreen.route+
+                                    "?taskId={taskId}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "taskId"
+                                ) {
+                                    type = NavType.IntType
+                                    defaultValue = -1
+                                }
+                            )
                         ) {
                             AddEditTaskScreen(navController = navController)
                         }

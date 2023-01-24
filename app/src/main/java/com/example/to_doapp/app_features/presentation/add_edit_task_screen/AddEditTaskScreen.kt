@@ -42,6 +42,7 @@ fun AddEditTaskScreen(
     val spacing = LocalSpacing.current
     val isRepeatableSelected = viewModel.state.isRepeatableSwitchSelected
     val isNotifyingSelected = viewModel.state.isNotifyingSwitchSelected
+    val isExistingTask = viewModel.isExistingTask
 
     var selectedDate by remember {
         mutableStateOf(LocalDate.now())
@@ -49,40 +50,39 @@ fun AddEditTaskScreen(
 
     val dateDialogState = rememberMaterialDialogState()
 
-        MaterialDialog(
-            dialogState = dateDialogState,
-            buttons = {
-                positiveButton(
-                    text = "Ok",
-                    textStyle = TextStyle(color = MaterialTheme.colors.onPrimary),
-                    onClick = {
-                        viewModel.onEvent(
-                            AddEditTaskEvent.OnDateChange(
-                                localDate = LocalDate.of(
-                                    selectedDate.year,
-                                    selectedDate.monthValue,
-                                    selectedDate.dayOfMonth
-                                )
+    MaterialDialog(
+        dialogState = dateDialogState,
+        buttons = {
+            positiveButton(
+                text = "Ok",
+                textStyle = TextStyle(color = MaterialTheme.colors.onPrimary),
+                onClick = {
+                    viewModel.onEvent(
+                        AddEditTaskEvent.OnDateChange(
+                            localDate = LocalDate.of(
+                                selectedDate.year,
+                                selectedDate.monthValue,
+                                selectedDate.dayOfMonth
                             )
                         )
-                    }
-                )
-                negativeButton(
-                    text = "Cancel",
-                    textStyle = TextStyle(color = MaterialTheme.colors.onPrimary)
-                )
-            }
-        ) {
-            datepicker(
-                initialDate = LocalDate.now(),
-                title = "Select a date",
-                colors = DatePickerDefaults.colors(dateActiveBackgroundColor = MaterialTheme.colors.secondary)
-
-            ) {
-                selectedDate = it
-            }
+                    )
+                }
+            )
+            negativeButton(
+                text = "Cancel",
+                textStyle = TextStyle(color = MaterialTheme.colors.onPrimary)
+            )
         }
+    ) {
+        datepicker(
+            initialDate = LocalDate.now(),
+            title = "Select a date",
+            colors = DatePickerDefaults.colors(dateActiveBackgroundColor = MaterialTheme.colors.secondary)
 
+        ) {
+            selectedDate = it
+        }
+    }
 
     LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
@@ -103,10 +103,7 @@ fun AddEditTaskScreen(
         scaffoldState = scaffoldState,
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            AddEditTaskTopBar(
-                onAddClick = {},
-                onDeleteClick = {},
-                onCancelClick = { viewModel.onEvent(AddEditTaskEvent.OnCancelClick) })
+            AddEditTaskTopBar(onCancelClick = { viewModel.onEvent(AddEditTaskEvent.OnCancelClick) })
         }
     ) { padding ->
         Column(
@@ -138,7 +135,9 @@ fun AddEditTaskScreen(
             )
 
             DateCardForm(
-                value = parseDate(date = viewModel.state.date),
+                value = if (isExistingTask) "${viewModel.state.day}/${viewModel.state.month}/${viewModel.state.year}" else parseDate(
+                    date = viewModel.state.date
+                ),
                 isEditable = false,
                 onValueChange = {},
                 keyboardOptions = KeyboardOptions(),

@@ -19,7 +19,13 @@ import com.example.to_doapp.ui.theme.LocalSpacing
 
 
 @Composable
-fun TaskDetailCard() {
+fun TaskDetailCard(
+    title: String,
+    description: String,
+    date: String,
+    isTaskRepeating: Boolean,
+    isTaskNotifying: Boolean
+) {
 
 
     val spacing = LocalSpacing.current
@@ -47,12 +53,12 @@ fun TaskDetailCard() {
                     )
             ) {
                 Row(Modifier.fillMaxWidth()) {
-                    Text(text = "Title", style = MaterialTheme.typography.h4)
+                    Text(text = title, style = MaterialTheme.typography.h4)
                 }
                 Spacer(modifier = Modifier.padding(spacing.spaceSmall))
                 Row(Modifier.fillMaxWidth()) {
                     Text(
-                        text = "This is where the description of the selected task will go, just writing this for design purposes.",
+                        text = description,
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight.Normal,
                         modifier = Modifier.offset(x = 5.dp)
@@ -65,8 +71,16 @@ fun TaskDetailCard() {
                             .fillMaxHeight()
                             .fillMaxWidth(.5f)
                     ) {
-                        IconRow(icon = Icons.Default.Refresh, text = "Repeating")
-                        IconRow(icon = Icons.Default.Notifications, text = "Notifying")
+                        IconRow(
+                            icon = Icons.Default.Refresh,
+                            text = "Repeating",
+                            isEnabled = isTaskRepeating
+                        )
+                        IconRow(
+                            icon = Icons.Default.Notifications,
+                            text = "Notifying",
+                            isEnabled = isTaskNotifying
+                        )
                     }
                     Column(
                         verticalArrangement = Arrangement.Bottom,

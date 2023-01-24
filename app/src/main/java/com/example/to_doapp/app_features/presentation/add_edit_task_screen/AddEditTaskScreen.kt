@@ -105,6 +105,9 @@ fun AddEditTaskScreen(
                 UiEvent.OnCancelClick -> {
                     navController.navigate(Screen.TaskOverviewScreen.route)
                 }
+                UiEvent.OnDeleteTask -> {
+
+                }
             }
         }
     }

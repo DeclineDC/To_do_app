@@ -8,12 +8,14 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun IconRow(
     icon: ImageVector,
     text: String,
+    isEnabled: Boolean,
     modifier: Modifier = Modifier
 ) {
 
@@ -25,7 +27,22 @@ fun IconRow(
     ) {
         Icon(imageVector = icon, contentDescription = null)
         Spacer(modifier = Modifier.padding(2.dp))
-        Text(text = text, style = MaterialTheme.typography.body2, modifier = Modifier.offset(y=3.dp))
+        if (isEnabled) {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier.offset(y = 3.dp)
+            )
+        }
+        else {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.body2,
+                textDecoration = TextDecoration.LineThrough,
+                modifier = Modifier.offset(y = 3.dp)
+            )
+        }
+
 
 
     }

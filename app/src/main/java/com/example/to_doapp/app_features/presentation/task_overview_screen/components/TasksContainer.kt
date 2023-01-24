@@ -15,13 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.parseDate
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewViewModel
+import com.example.to_doapp.app_features.presentation.util.Screen
 import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
 fun TasksContainer(
-    onTaskSelect: () -> Unit,
+    navController: NavController,
     modifier: Modifier = Modifier,
     viewModel: TaskOverviewViewModel
 ) {
@@ -49,7 +51,7 @@ fun TasksContainer(
                             .fillMaxWidth()
                             .background(Color.White)
                             .clickable {
-                                onTaskSelect()
+                                navController.navigate(Screen.TaskDetailScreen.route + "?taskId=${task.id}")
                             }
                     )
                 }

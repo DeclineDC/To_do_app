@@ -12,9 +12,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.AddEditTaskScreen
 import com.example.to_doapp.app_features.presentation.task_detail_screen.TaskDetailScreen
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewScreen
@@ -54,7 +56,16 @@ class MainActivity : ComponentActivity() {
                             AddEditTaskScreen(navController = navController)
                         }
                         composable(
-                            route = Screen.TaskDetailScreen.route
+                            route = Screen.TaskDetailScreen.route +
+                                    "?taskId={taskId}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "taskId"
+                                ) {
+                                    type = NavType.IntType
+                                    defaultValue = -1
+                                }
+                            )
                         ) {
                             TaskDetailScreen(navController = navController)
                         }

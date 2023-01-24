@@ -59,8 +59,10 @@ fun TaskOverviewScreen(
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.onPrimary
             )
-            TasksContainer(viewModel = viewModel,
-                onTaskSelect = { navController.navigate(Screen.TaskDetailScreen.route) })
+            TasksContainer(
+                viewModel = viewModel,
+                navController = navController
+            )
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
             Text(
                 text = "All Tasks",
@@ -70,7 +72,8 @@ fun TaskOverviewScreen(
             )
             TasksContainer(
                 viewModel = viewModel,
-                onTaskSelect = { navController.navigate(Screen.TaskDetailScreen.route) })
+                navController = navController
+            )
         }
 
     }

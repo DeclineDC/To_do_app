@@ -8,20 +8,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.to_doapp.app_features.presentation.add_edit_task_screen.AddEditTaskEvent
-import com.example.to_doapp.app_features.presentation.add_edit_task_screen.AddEditTaskViewModel
-import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.AddEditTaskTopBar
-import com.example.to_doapp.app_features.presentation.task_detail_screen.components.IconRow
 import com.example.to_doapp.app_features.presentation.task_detail_screen.components.TaskDetailButton
 import com.example.to_doapp.app_features.presentation.task_detail_screen.components.TaskDetailCard
 import com.example.to_doapp.app_features.presentation.task_detail_screen.components.TaskDetailTopBar
 import com.example.to_doapp.app_features.presentation.util.Screen
+import com.example.to_doapp.app_features.presentation.util.UiEvent
 import com.example.to_doapp.ui.theme.LocalSpacing
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun TaskDetailScreen(
@@ -31,6 +29,27 @@ fun TaskDetailScreen(
 
     val scaffoldState = rememberScaffoldState()
     val spacing = LocalSpacing.current
+
+    LaunchedEffect(key1 = true) {
+        viewModel.eventFlow.collectLatest { event ->
+            when (event) {
+                is UiEvent.ShowSnackBar -> {
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = event.message
+                    )
+                }
+                UiEvent.OnCancelClick -> {
+
+                }
+                UiEvent.OnDeleteTask -> {
+                    navController.navigate(Screen.TaskOverviewScreen.route)
+                }
+                UiEvent.SaveTask -> {
+
+                }
+            }
+        }
+    }
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -50,7 +69,13 @@ fun TaskDetailScreen(
 
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
 
-            TaskDetailCard()
+            TaskDetailCard(
+                title = viewModel.state.title,
+                description = viewModel.state.description,
+                date = "24/01/2023",
+                isTaskNotifying = viewModel.state.isTaskNotifying,
+                isTaskRepeating = viewModel.state.isTaskRepeatable
+            )
 
             Spacer(modifier = Modifier.padding(spacing.spaceLarge))
 
@@ -64,7 +89,7 @@ fun TaskDetailScreen(
                 )
                 TaskDetailButton(
                     text = "Delete Task",
-                    onClick = { /*TODO*/ },
+                    onClick = { viewModel.onEvent(TaskDetailEvent.OnDeleteTask(viewModel.selectedTask!!)) },
                     width = 1f,
                     color = Color(0XFFe07575),
                     icon = Icons.Default.Delete

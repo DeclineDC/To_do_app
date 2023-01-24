@@ -41,13 +41,17 @@ fun AddEditTaskTopBar(
             .background(color = MaterialTheme.colors.primary)
             .padding(start = 12.dp, top = 32.dp, end = 12.dp, bottom = 12.dp)
     ) {
-        Row(modifier = Modifier.fillMaxHeight()) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth()
+        ) {
+            Box() {}
             Text(
                 text = if (isExistingTask) "Edit Task" else "New Task",
                 style = MaterialTheme.typography.h2,
                 color = MaterialTheme.colors.onPrimary
             )
-            Spacer(modifier = Modifier.padding(56.dp))
             Icon(
                 imageVector = Icons.Default.Close,
                 contentDescription = stringResource(id = R.string.cancel),

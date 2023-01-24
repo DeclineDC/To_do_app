@@ -1,5 +1,6 @@
 package com.example.to_doapp.app_features.presentation.task_detail_screen.components
 
+import android.graphics.Color
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.to_doapp.R
 import com.example.to_doapp.ui.theme.LocalSpacing
@@ -33,21 +35,29 @@ fun TaskDetailTopBar(
             .background(color = MaterialTheme.colors.primary)
             .padding(start = 12.dp, top = 32.dp, end = 12.dp, bottom = 12.dp)
     ) {
-        Row(modifier = Modifier.fillMaxHeight()) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth()
+        ) {
+            Box() {}
             Text(
                 text = "Task Details",
                 style = MaterialTheme.typography.h2,
-                color = MaterialTheme.colors.onPrimary
+                color = MaterialTheme.colors.onPrimary,
+                textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.padding(56.dp))
+
             Icon(
                 imageVector = Icons.Default.Close,
                 contentDescription = stringResource(id = R.string.cancel),
                 tint = MaterialTheme.colors.onPrimary,
-                modifier = Modifier.clickable {
-                    onCancelClick()
-                }
+                modifier = Modifier
+                    .clickable {
+                        onCancelClick()
+                    }
             )
         }
+
     }
 }

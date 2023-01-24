@@ -1,10 +1,7 @@
 package com.example.to_doapp.app_features.presentation.task_detail_screen.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -21,14 +18,15 @@ fun IconRow(
 ) {
 
     Row(
-        horizontalArrangement = Arrangement.End,
+        horizontalArrangement = Arrangement.Start,
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colors.surface)
-            .padding(end = 12.dp , bottom = 4.dp)
+            .padding(end = 12.dp, bottom = 4.dp)
     ) {
-        Text(text = text, style = MaterialTheme.typography.body2)
         Icon(imageVector = icon, contentDescription = null)
+        Spacer(modifier = Modifier.padding(2.dp))
+        Text(text = text, style = MaterialTheme.typography.body2, modifier = Modifier.offset(y=3.dp))
+
 
     }
 }

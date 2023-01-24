@@ -45,8 +45,8 @@ fun TaskOverviewTopBar(
     ) {
         Image(painter = painterResource(id = R.drawable.app_logo), contentDescription = null )
         Text(
-            text = "Tasks",
-            style = MaterialTheme.typography.h3,
+            text = "Your Tasks",
+            style = MaterialTheme.typography.h2,
             color = MaterialTheme.colors.onPrimary
         )
         Icon(

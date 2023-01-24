@@ -54,8 +54,8 @@ fun TaskOverviewScreen(
         ) {
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
             Text(
-                text = "Tasks today",
-                modifier = Modifier.padding(spacing.space12),
+                text = "Daily Tasks",
+                modifier = Modifier.padding(spacing.spaceMedium),
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.onPrimary
             )
@@ -63,8 +63,8 @@ fun TaskOverviewScreen(
                 onTaskSelect = { navController.navigate(Screen.TaskDetailScreen.route) })
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
             Text(
-                text = "All tasks",
-                modifier = Modifier.padding(spacing.space12),
+                text = "All Tasks",
+                modifier = Modifier.padding(spacing.spaceMedium),
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.onPrimary
             )

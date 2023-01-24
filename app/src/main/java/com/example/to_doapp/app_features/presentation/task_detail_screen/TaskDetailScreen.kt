@@ -51,9 +51,7 @@ fun TaskDetailScreen(
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
 
             TaskDetailCard()
-            Spacer(modifier = Modifier.padding(spacing.space12))
-            IconRow(icon = Icons.Default.Refresh, text = "Repeating")
-            IconRow(icon = Icons.Default.Notifications, text = "Notifying")
+
             Spacer(modifier = Modifier.padding(spacing.spaceLarge))
 
             Row(Modifier.fillMaxWidth()) {

@@ -46,17 +46,9 @@ fun AddEditTaskScreen(
     var selectedDate by remember {
         mutableStateOf(LocalDate.now())
     }
-    /*val formattedDate by remember {
-        derivedStateOf {
-            DateTimeFormatter
-                .ofPattern("dd/MM/uuuu")
-                .format(selectedDate)
-        }
-    }*/
 
     val dateDialogState = rememberMaterialDialogState()
 
-    val datePickerDialog =
         MaterialDialog(
             dialogState = dateDialogState,
             buttons = {
@@ -91,6 +83,7 @@ fun AddEditTaskScreen(
             }
         }
 
+
     LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
             when (event) {
@@ -99,14 +92,8 @@ fun AddEditTaskScreen(
                         message = event.message
                     )
                 }
-                is UiEvent.SaveTask -> {
+                is UiEvent.OnCancelClick -> {
                     navController.navigate(Screen.TaskOverviewScreen.route)
-                }
-                UiEvent.OnCancelClick -> {
-                    navController.navigate(Screen.TaskOverviewScreen.route)
-                }
-                UiEvent.OnDeleteTask -> {
-
                 }
             }
         }

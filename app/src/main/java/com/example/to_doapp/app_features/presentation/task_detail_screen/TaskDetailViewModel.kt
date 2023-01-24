@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.to_doapp.app_features.domain.model.Task
 import com.example.to_doapp.app_features.domain.use_case.TaskUseCases
-import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewEvent
 import com.example.to_doapp.app_features.presentation.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -57,7 +56,7 @@ class TaskDetailViewModel @Inject constructor(
             is TaskDetailEvent.OnDeleteTask -> {
                 viewModelScope.launch {
                     taskUseCases.deleteTask(event.task)
-                    _eventFlow.emit(UiEvent.OnDeleteTask)
+                    _eventFlow.emit(UiEvent.OnCancelClick)
                 }
             }
 

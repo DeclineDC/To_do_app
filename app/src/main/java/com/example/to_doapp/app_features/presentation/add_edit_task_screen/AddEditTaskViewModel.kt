@@ -45,7 +45,7 @@ class AddEditTaskViewModel @Inject constructor(
                                 isTaskNotifying = state.isNotifyingSwitchSelected
                             )
                         )
-                        _eventFlow.emit(UiEvent.SaveTask)
+                        _eventFlow.emit(UiEvent.OnCancelClick)
                     } catch (e: InvalidTaskException) {
                         _eventFlow.emit(
                             UiEvent.ShowSnackBar(

@@ -39,6 +39,23 @@ fun TaskOverviewScreen(
     val spacing = LocalSpacing.current
     val scaffoldState = rememberScaffoldState()
 
+    LaunchedEffect(key1 = true) {
+        viewModel.eventFlow.collectLatest { event ->
+            when (event) {
+                is UiEvent.ShowSnackBar -> {
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = event.message
+                    )
+                }
+                UiEvent.OnCancelClick -> {
+                    navController.navigate(Screen.TaskOverviewScreen.route)
+                }
+            }
+        }
+    }
+
+
+
 
     Scaffold(
         scaffoldState = scaffoldState,

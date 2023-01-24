@@ -39,13 +39,7 @@ fun TaskDetailScreen(
                     )
                 }
                 UiEvent.OnCancelClick -> {
-
-                }
-                UiEvent.OnDeleteTask -> {
                     navController.navigate(Screen.TaskOverviewScreen.route)
-                }
-                UiEvent.SaveTask -> {
-
                 }
             }
         }

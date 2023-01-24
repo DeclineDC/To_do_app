@@ -7,9 +7,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.to_doapp.app_features.domain.use_case.TaskUseCases
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.AddEditTaskEvent
+import com.example.to_doapp.app_features.presentation.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,22 +24,13 @@ class TaskOverviewViewModel @Inject constructor(
     var state by mutableStateOf(TaskOverviewState())
         private set
 
+    private val _eventFlow = MutableSharedFlow<UiEvent>()
+    val eventFlow = _eventFlow.asSharedFlow()
+
     init {
         getAllTasks()
     }
 
-
-    fun onEvent(event: TaskOverviewEvent) {
-        when (event) {
-
-            is TaskOverviewEvent.OnAddTask -> {
-
-            }
-            is TaskOverviewEvent.OnTaskSelect -> {
-
-            }
-        }
-    }
 
     private fun getAllTasks() {
         taskUseCases.getTasks()

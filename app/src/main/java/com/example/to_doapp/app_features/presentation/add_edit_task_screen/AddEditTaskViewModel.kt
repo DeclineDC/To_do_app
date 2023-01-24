@@ -17,6 +17,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @HiltViewModel
@@ -102,6 +104,7 @@ class AddEditTaskViewModel @Inject constructor(
                 }
             }
             is AddEditTaskEvent.OnDateChange -> {
+                isExistingTask = false
                 state = state.copy(
                     date = event.localDate
                 )

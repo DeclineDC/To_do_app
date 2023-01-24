@@ -47,6 +47,7 @@ class AddEditTaskViewModel @Inject constructor(
                             description = task.description,
                             day = task.day,
                             month = task.month,
+                            year = task.year,
                             isRepeatableSwitchSelected = task.isTaskRepeatable,
                             isNotifyingSwitchSelected = task.isTaskNotifying
                         )
@@ -70,7 +71,8 @@ class AddEditTaskViewModel @Inject constructor(
                                 month = state.date.monthValue,
                                 year = state.date.year,
                                 isTaskRepeatable = state.isRepeatableSwitchSelected,
-                                isTaskNotifying = state.isNotifyingSwitchSelected
+                                isTaskNotifying = state.isNotifyingSwitchSelected,
+                                id = selectedTask?.id
                             )
                         )
                         _eventFlow.emit(UiEvent.OnCancelClick)

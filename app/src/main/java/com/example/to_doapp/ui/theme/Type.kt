@@ -16,14 +16,14 @@ val Inter = FontFamily(
     Font(R.font.inter_bold, FontWeight.Bold),
     Font(R.font.inter_semibold, FontWeight.SemiBold),
     Font(R.font.inter_extrabold, FontWeight.ExtraBold),
-    )
+)
 
 
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
         fontFamily = Inter,
-        fontWeight =  FontWeight.SemiBold,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 14.sp
     ),
     body2 = TextStyle(
@@ -33,23 +33,28 @@ val Typography = Typography(
     ),
     h1 = TextStyle(
         fontFamily = Inter,
-        fontWeight =  FontWeight.SemiBold,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp
     ),
     h2 = TextStyle(
         fontFamily = Inter,
-        fontWeight =  FontWeight.Normal,
+        fontWeight = FontWeight.Normal,
         fontSize = 18.sp
     ),
     h3 = TextStyle(
         fontFamily = Inter,
-        fontWeight =  FontWeight.Bold,
+        fontWeight = FontWeight.Bold,
         fontSize = 20.sp
     ),
     h4 = TextStyle(
         fontFamily = Inter,
-        fontWeight =  FontWeight.Normal,
+        fontWeight = FontWeight.Normal,
         fontSize = 32.sp
+    ),
+    h5 = TextStyle(
+        fontFamily = Inter,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 18.sp
     )
     /* Other default text styles to override
     button = TextStyle(

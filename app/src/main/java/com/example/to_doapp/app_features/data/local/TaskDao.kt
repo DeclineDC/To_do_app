@@ -12,7 +12,7 @@ interface TaskDao {
     suspend fun getTaskById(id: Int): Task?
 
     @Query("SELECT * FROM task WHERE isTaskCompleted = 0 ORDER BY day ASC")
-    fun getTasks(): Flow<List<Task>>
+    fun getTasks(/*day: Int*/): Flow<List<Task>>
 
     @Query("SELECT * FROM task WHERE day = :day AND month = :month AND year = :year AND isTaskCompleted = 0")
     fun getTasksByDate(day: Int, month: Int, year: Int): Flow<List<Task>>?

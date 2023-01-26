@@ -69,9 +69,9 @@ fun TaskOverviewScreen(
         ) {
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
             Text(
-                text = "Daily Tasks",
+                text = "Tasks Today",
                 modifier = Modifier.padding(spacing.spaceMedium),
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.h1,
                 color = MaterialTheme.colors.onPrimary
             )
             DailyTasksContainer(
@@ -80,9 +80,9 @@ fun TaskOverviewScreen(
             )
             Spacer(modifier = Modifier.padding(spacing.spaceSmall))
             Text(
-                text = "All Tasks",
+                text = "Upcoming Tasks",
                 modifier = Modifier.padding(spacing.spaceMedium),
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.h1,
                 color = MaterialTheme.colors.onPrimary
             )
             AllTasksContainer(

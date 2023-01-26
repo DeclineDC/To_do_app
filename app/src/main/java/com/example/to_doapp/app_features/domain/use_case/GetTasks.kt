@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 class GetTasks(
     private val repository: TaskRepository
 ) {
-    operator fun invoke(): Flow<List<Task>> {
-        return repository.getTasks()
+    operator fun invoke(/*day: Int*/): Flow<List<Task>> {
+        return repository.getTasks(/*day*/)
     }
 }

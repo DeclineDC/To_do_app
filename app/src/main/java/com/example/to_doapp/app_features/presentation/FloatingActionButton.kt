@@ -19,7 +19,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FloatingActionButton() {
+fun FloatingActionButton(
+    onClick: () -> Unit
+) {
     androidx.compose.material.FloatingActionButton(
         onClick = { /*TODO*/ },
         shape = CircleShape,
@@ -30,7 +32,7 @@ fun FloatingActionButton() {
         elevation = FloatingActionButtonDefaults.elevation(0.dp)
     ) {
         IconButton(
-            onClick = { /*TODO*/ }, modifier = Modifier
+            onClick = { onClick() }, modifier = Modifier
                 .fillMaxSize()
                 .padding(6.dp)
                 .border(

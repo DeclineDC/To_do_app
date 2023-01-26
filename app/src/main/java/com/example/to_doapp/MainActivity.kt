@@ -57,7 +57,11 @@ class MainActivity : ComponentActivity() {
                     bottomBar = { TaskBottomNavBar() },
                     isFloatingActionButtonDocked = true,
                     floatingActionButton = {
-                        com.example.to_doapp.app_features.presentation.FloatingActionButton()
+                        com.example.to_doapp.app_features.presentation.FloatingActionButton {
+                            navController.navigate(
+                                Screen.AddEditTaskScreen.route
+                            )
+                        }
                     },
                     floatingActionButtonPosition = FabPosition.Center
                 ) {

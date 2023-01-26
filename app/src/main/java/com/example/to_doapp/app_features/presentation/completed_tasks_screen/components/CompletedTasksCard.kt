@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,6 +19,7 @@ import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
 fun CompletedTasksCard(
+    completedTasks: Int,
     modifier: Modifier = Modifier
 ) {
 
@@ -37,17 +39,27 @@ fun CompletedTasksCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        start = spacing.space12,
-                        end = spacing.space12,
-                        top = spacing.space12,
-                        bottom = spacing.spaceSmall
+                        spacing.spaceMedium
                     )
             ) {
-                Text(text = "You have completed...")
-                Spacer(modifier = Modifier.padding(spacing.spaceMedium))
-                Text(text = "56", textAlign = TextAlign.Center)
-                Spacer(modifier = Modifier.padding(spacing.spaceMedium))
-                Text(text = "...Tasks so far!", textAlign = TextAlign.End)
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
+                    Text(text = "You have completed...", style = typography.h3)
+                }
+                Spacer(modifier = Modifier.padding(spacing.spaceSmall))
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                    Text(
+                        text = "$completedTasks",
+                        style = typography.h6,
+                        color = colors.secondary,
+                        maxLines = 1
+                    )
+                }
+
+                Spacer(modifier = Modifier.padding(spacing.spaceSmall))
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                    Text(text = "...Tasks so far!", style = typography.h3)
+                }
+
 
             }
         }

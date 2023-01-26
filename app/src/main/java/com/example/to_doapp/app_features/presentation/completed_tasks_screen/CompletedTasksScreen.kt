@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -43,8 +44,13 @@ fun CompletedTasksScreen(
 
         ) {
 
-            CompletedTasksCard()
-            Spacer(modifier = Modifier.padding(spacing.spaceMedium))
+            CompletedTasksCard(viewModel.state.allTasks.size)
+            Text(
+                text = "Completed Tasks",
+                modifier = Modifier.padding(spacing.spaceMedium),
+                style = MaterialTheme.typography.h1,
+                color = MaterialTheme.colors.onPrimary
+            )
             CompletedTasksContainer(navController, viewModel = viewModel)
 
         }

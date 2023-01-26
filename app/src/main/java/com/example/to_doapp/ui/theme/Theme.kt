@@ -49,6 +49,9 @@ fun ToDoAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composabl
     systemUiController.setStatusBarColor(
         color = if (!darkTheme) Color.White else Color(0xFF181818)
     )
+    systemUiController.setSystemBarsColor(
+        color = if (!darkTheme) Color.White else Color(0xFF181818)
+    )
 
     MaterialTheme(
         colors = colors,

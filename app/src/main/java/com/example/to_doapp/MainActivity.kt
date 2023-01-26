@@ -1,22 +1,36 @@
 package com.example.to_doapp
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.to_doapp.app_features.presentation.TaskBottomNavBar
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.AddEditTaskScreen
 import com.example.to_doapp.app_features.presentation.task_detail_screen.TaskDetailScreen
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewScreen
@@ -27,6 +41,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +51,15 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val spacing = LocalSpacing.current
 
-                TaskOverviewScreen(navController = navController)
 
-                Surface(
-                    modifier = Modifier.fillMaxSize()
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = { TaskBottomNavBar() },
+                    isFloatingActionButtonDocked = true,
+                    floatingActionButton = {
+                        com.example.to_doapp.app_features.presentation.FloatingActionButton()
+                    },
+                    floatingActionButtonPosition = FabPosition.Center
                 ) {
                     NavHost(
                         navController = navController,
@@ -51,7 +71,7 @@ class MainActivity : ComponentActivity() {
                             TaskOverviewScreen(navController = navController)
                         }
                         composable(
-                            route = Screen.AddEditTaskScreen.route+
+                            route = Screen.AddEditTaskScreen.route +
                                     "?taskId={taskId}",
                             arguments = listOf(
                                 navArgument(

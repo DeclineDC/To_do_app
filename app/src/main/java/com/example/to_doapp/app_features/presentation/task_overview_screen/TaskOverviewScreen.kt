@@ -58,7 +58,7 @@ fun TaskOverviewScreen(
     Scaffold(
         scaffoldState = scaffoldState,
         modifier = Modifier.fillMaxSize(),
-        topBar = { TaskOverviewTopBar(onAddClick = { navController.navigate(Screen.AddEditTaskScreen.route) }) }
+        topBar = { TaskOverviewTopBar() }
     ) { padding ->
         Column(
             Modifier

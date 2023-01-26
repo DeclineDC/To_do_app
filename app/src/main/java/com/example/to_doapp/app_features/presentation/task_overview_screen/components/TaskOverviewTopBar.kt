@@ -29,13 +29,12 @@ import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
 fun TaskOverviewTopBar(
-    onAddClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val spacing = LocalSpacing.current
 
     Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
+        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.Bottom,
         modifier = modifier
             .fillMaxWidth()
@@ -43,19 +42,10 @@ fun TaskOverviewTopBar(
             .background(color = MaterialTheme.colors.primary)
             .padding(start = 12.dp, top = 32.dp, end = 12.dp, bottom = 12.dp)
     ) {
-        Image(painter = painterResource(id = R.drawable.app_logo), contentDescription = null )
         Text(
             text = "Your Tasks",
             style = MaterialTheme.typography.h2,
             color = MaterialTheme.colors.onPrimary
-        )
-        Icon(
-            imageVector = Icons.Default.Add,
-            contentDescription = stringResource(id = R.string.cancel),
-            tint = MaterialTheme.colors.secondary,
-            modifier = Modifier.clickable {
-                onAddClick()
-            }
         )
     }
 }

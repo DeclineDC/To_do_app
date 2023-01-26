@@ -17,6 +17,9 @@ import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.to_doapp.app_features.presentation.TaskBottomNavBar
@@ -49,15 +53,34 @@ class MainActivity : ComponentActivity() {
             ToDoAppTheme {
 
                 val navController = rememberNavController()
+
+
                 val spacing = LocalSpacing.current
+
+                val screens = listOf(
+                    Screen.AddEditTaskScreen,
+                    Screen.TaskOverviewScreen,
+                    Screen.TaskDetailScreen
+                )
+
+
+                val showBottomBar =
+                    navController.currentBackStackEntryAsState().value?.destination?.route in screens.map { it.route }
 
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    bottomBar = { TaskBottomNavBar() },
+                    bottomBar = {
+                        TaskBottomNavBar(
+                            showBottomBar = showBottomBar,
+                            onHomeClick = { navController.navigate(Screen.TaskOverviewScreen.route) },
+                            onCompletedTasksClick = {})
+                    },
                     isFloatingActionButtonDocked = true,
                     floatingActionButton = {
-                        com.example.to_doapp.app_features.presentation.FloatingActionButton {
+                        com.example.to_doapp.app_features.presentation.FloatingActionButton(
+                            showBottomBar
+                        ) {
                             navController.navigate(
                                 Screen.AddEditTaskScreen.route
                             )

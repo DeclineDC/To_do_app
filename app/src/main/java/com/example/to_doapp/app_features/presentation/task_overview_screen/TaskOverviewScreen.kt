@@ -67,7 +67,7 @@ fun TaskOverviewScreen(
                 .padding(padding)
                 .background(MaterialTheme.colors.surface)
         ) {
-            Spacer(modifier = Modifier.padding(spacing.spaceSmall))
+            Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
             Text(
                 text = "Tasks Today",
                 modifier = Modifier.padding(spacing.spaceMedium),
@@ -78,7 +78,7 @@ fun TaskOverviewScreen(
                 viewModel = viewModel,
                 navController = navController
             )
-            Spacer(modifier = Modifier.padding(spacing.spaceSmall))
+            Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
             Text(
                 text = "Upcoming Tasks",
                 modifier = Modifier.padding(spacing.spaceMedium),

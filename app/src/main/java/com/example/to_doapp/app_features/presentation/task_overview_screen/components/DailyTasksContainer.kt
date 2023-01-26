@@ -41,7 +41,7 @@ fun DailyTasksContainer(
         backgroundColor = MaterialTheme.colors.primary
     ) {
         Column(modifier = Modifier.background(MaterialTheme.colors.primary)) {
-            LazyColumn(modifier = Modifier.height(190.dp)) {
+            LazyColumn(modifier = Modifier.height(212.dp)) {
                 if (viewModel.state.allTasks.isNullOrEmpty()) {
                     items(1) {
                         Column(
@@ -52,8 +52,8 @@ fun DailyTasksContainer(
                                 .fillMaxWidth()
                                 .fillMaxHeight()
                                 .padding(
-                                    top = 55.dp,
-                                    bottom = 55.dp
+                                    top = 66.dp,
+                                    bottom = 66.dp
                                 )
                                 .clickable(indication = null,
                                     interactionSource = remember { MutableInteractionSource() }) {

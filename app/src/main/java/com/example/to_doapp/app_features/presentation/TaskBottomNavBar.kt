@@ -52,7 +52,7 @@ fun TaskBottomNavBar(
 
 
                 IconButton(
-                    onClick = { /*TODO*/ }, modifier = Modifier
+                    onClick = { onHomeClick() }, modifier = Modifier
                         .fillMaxSize()
                         .weight(1F)
                         .offset(x = -14.dp)
@@ -67,7 +67,7 @@ fun TaskBottomNavBar(
 
 
                 IconButton(
-                    onClick = { /*TODO*/ }, modifier = Modifier
+                    onClick = { onCompletedTasksClick() }, modifier = Modifier
                         .fillMaxSize()
                         .weight(1F)
                         .offset(x = 14.dp)

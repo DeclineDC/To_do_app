@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.to_doapp.app_features.domain.model.Task
 import com.example.to_doapp.ui.theme.LocalSpacing
@@ -47,12 +48,15 @@ fun TaskItem(
             Text(
                 text = task.title,
                 style = MaterialTheme.typography.body1,
+                maxLines = 1,
                 color = MaterialTheme.colors.onPrimary
             )
             Text(
                 text = "${task.description}",
                 style = MaterialTheme.typography.body2,
                 color = MaterialTheme.colors.primaryVariant,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .padding(top = 4.dp)
                     .offset(x = 2.dp)

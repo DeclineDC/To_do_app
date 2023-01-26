@@ -4,4 +4,5 @@ sealed class Screen(val route: String) {
     object TaskOverviewScreen : Screen("task_overview_screen")
     object AddEditTaskScreen : Screen("add_edit_task_screen")
     object TaskDetailScreen : Screen("task_detail_screen")
+    object CompletedTasksScreen : Screen("completed_tasks_screen")
 }

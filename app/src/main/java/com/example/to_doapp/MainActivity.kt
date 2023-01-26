@@ -36,6 +36,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.to_doapp.app_features.presentation.TaskBottomNavBar
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.AddEditTaskScreen
+import com.example.to_doapp.app_features.presentation.completed_tasks_screen.CompletedTasksScreen
 import com.example.to_doapp.app_features.presentation.task_detail_screen.TaskDetailScreen
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewScreen
 import com.example.to_doapp.app_features.presentation.util.Screen
@@ -60,7 +61,8 @@ class MainActivity : ComponentActivity() {
                 val screens = listOf(
                     Screen.AddEditTaskScreen,
                     Screen.TaskOverviewScreen,
-                    Screen.TaskDetailScreen
+                    Screen.TaskDetailScreen,
+                    Screen.CompletedTasksScreen
                 )
 
 
@@ -74,7 +76,7 @@ class MainActivity : ComponentActivity() {
                         TaskBottomNavBar(
                             showBottomBar = showBottomBar,
                             onHomeClick = { navController.navigate(Screen.TaskOverviewScreen.route) },
-                            onCompletedTasksClick = {})
+                            onCompletedTasksClick = { navController.navigate(Screen.CompletedTasksScreen.route) })
                     },
                     isFloatingActionButtonDocked = true,
                     floatingActionButton = {
@@ -96,6 +98,11 @@ class MainActivity : ComponentActivity() {
                             route = Screen.TaskOverviewScreen.route
                         ) {
                             TaskOverviewScreen(navController = navController)
+                        }
+                        composable(
+                            route = Screen.CompletedTasksScreen.route
+                        ) {
+                            CompletedTasksScreen(navController = navController)
                         }
                         composable(
                             route = Screen.AddEditTaskScreen.route +

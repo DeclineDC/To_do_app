@@ -40,8 +40,8 @@ fun TaskItem(
                 .padding(
                     start = spacing.spaceMedium,
                     end = spacing.spaceMedium,
-                    bottom = spacing.spaceSmall,
-                    top = spacing.spaceSmall
+                    bottom = spacing.space12,
+                    top = spacing.space12
                 )
                 .background(color = MaterialTheme.colors.primary)
         ) {
@@ -85,16 +85,24 @@ fun TaskItem(
                     .background(color = MaterialTheme.colors.primary),
 
                 ) {
-                Text(text = date, style = MaterialTheme.typography.body1, color = MaterialTheme.colors.onPrimary)
+                Text(
+                    text = date,
+                    style = MaterialTheme.typography.body1,
+                    color = MaterialTheme.colors.onPrimary
+                )
                 Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
-                Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = null, tint = MaterialTheme.colors.secondary)
+                Icon(
+                    imageVector = Icons.Default.KeyboardArrowRight,
+                    contentDescription = null,
+                    tint = MaterialTheme.colors.secondary
+                )
             }
 
 
         }
 
     }
-    Divider(thickness = .5.dp)
+    Divider(modifier = Modifier.padding(start = spacing.spaceMedium, end = spacing.spaceMedium), thickness = .5.dp)
 
 
 }

@@ -52,10 +52,11 @@ fun FloatingActionButton(
                     .fillMaxSize()
                     .padding(6.dp)
                     .border(
-                        width = 2.dp,
+                        width = 2.5.dp,
                         brush = Brush.horizontalGradient(
                             colors = listOf(
-                                Color(0xFF33AFD3),
+                                Color(0xFF11998e),
+                                Color(0xFF38ef7d),
                                 MaterialTheme.colors.secondary
                             )
                         ),

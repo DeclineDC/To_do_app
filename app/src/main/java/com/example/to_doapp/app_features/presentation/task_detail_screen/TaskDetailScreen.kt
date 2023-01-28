@@ -11,8 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.to_doapp.R
 import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.parseToDateString
 import com.example.to_doapp.app_features.presentation.task_detail_screen.components.TaskDetailButton
 import com.example.to_doapp.app_features.presentation.task_detail_screen.components.TaskDetailCard
@@ -83,14 +85,14 @@ fun TaskDetailScreen(
                 Spacer(modifier = Modifier.padding(spacing.spaceLarge))
                 Row(Modifier.fillMaxWidth()) {
                     TaskDetailButton(
-                        text = "Edit Task",
+                        text = stringResource(R.string.edit_task_C),
                         onClick = { navController.navigate(Screen.AddEditTaskScreen.route + "?taskId=${viewModel.state.task?.id}") },
                         width = .5f,
                         color = MaterialTheme.colors.primaryVariant,
                         icon = Icons.Default.Edit
                     )
                     TaskDetailButton(
-                        text = "Delete Task",
+                        text = stringResource(R.string.delete_task),
                         onClick = { viewModel.onEvent(TaskDetailEvent.OnDeleteTask(viewModel.state.task!!)) },
                         width = 1f,
                         color = Color(0XFFe07575),
@@ -104,7 +106,7 @@ fun TaskDetailScreen(
 
             if (!viewModel.state.isTaskCompleted) {
                 TaskDetailButton(
-                    text = "Complete Task",
+                    text = stringResource(R.string.complete_task),
                     onClick = { viewModel.onEvent(TaskDetailEvent.OnCompleteTask) },
                     width = 1f,
                     icon = Icons.Default.Check

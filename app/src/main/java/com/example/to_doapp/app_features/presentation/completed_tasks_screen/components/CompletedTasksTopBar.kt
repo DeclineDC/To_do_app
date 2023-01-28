@@ -40,7 +40,7 @@ fun CompletedTasksTopBar(
         ) {
             Box() {}
             Text(
-                text = "Completed Tasks",
+                text = stringResource(R.string.completed_tasks),
                 style = MaterialTheme.typography.h2,
                 color = MaterialTheme.colors.onPrimary
             )

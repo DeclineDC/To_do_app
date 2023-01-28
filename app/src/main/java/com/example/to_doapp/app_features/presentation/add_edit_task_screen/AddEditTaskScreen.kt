@@ -54,7 +54,7 @@ fun AddEditTaskScreen(
         dialogState = dateDialogState,
         buttons = {
             positiveButton(
-                text = "Ok",
+                text = stringResource(R.string.ok),
                 textStyle = TextStyle(color = MaterialTheme.colors.onPrimary),
                 onClick = {
                     viewModel.onEvent(
@@ -69,14 +69,14 @@ fun AddEditTaskScreen(
                 }
             )
             negativeButton(
-                text = "Cancel",
+                text = stringResource(id = R.string.cancel),
                 textStyle = TextStyle(color = MaterialTheme.colors.onPrimary)
             )
         }
     ) {
         datepicker(
             initialDate = LocalDate.now(),
-            title = "Select a date",
+            title = stringResource(R.string.select_a_date),
             colors = DatePickerDefaults.colors(dateActiveBackgroundColor = MaterialTheme.colors.secondary)
 
         ) {

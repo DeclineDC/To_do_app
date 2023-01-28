@@ -48,7 +48,7 @@ fun TaskOverviewTopBar(
                 .fillMaxWidth()
         ) {
             Text(
-                text = "Your Tasks",
+                text = stringResource(R.string.your_tasks),
                 style = MaterialTheme.typography.h2,
                 color = MaterialTheme.colors.onPrimary
             )

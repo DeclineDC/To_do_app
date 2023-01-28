@@ -6,9 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.to_doapp.R
 import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
@@ -37,7 +39,7 @@ fun SwitchRow(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Send Notifications",
+                text = stringResource(R.string.send_notifications),
                 modifier = Modifier.offset(y = 10.dp),
                 style = MaterialTheme.typography.body1
             )
@@ -69,7 +71,7 @@ fun SwitchRow(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Repeat Task",
+                text = stringResource(R.string.repeat_task),
                 modifier = Modifier.offset(y = 10.dp),
                 style = MaterialTheme.typography.body1
             )

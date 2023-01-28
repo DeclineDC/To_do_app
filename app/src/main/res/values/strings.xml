@@ -8,5 +8,31 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="save_task">Save Task</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="new_task">New Task</string>
+    <string name="task_due_by">Task Due By</string>
+    <string name="send_notifications">Send Notifications</string>
+    <string name="repeat_task">Repeat Task</string>
+    <string name="select_a_date">Select a date</string>
+    <string name="ok">Ok</string>
+    <string name="you_have_completed">You have completed...</string>
+    <string name="tasks_so_far">...tasks so far!</string>
+    <string name="no_completed_tasks">No completed tasks</string>
+    <string name="completed_tasks">Completed Tasks</string>
+    <string name="completed_task_C">Completed Tasks</string>
+    <string name="repeating">Repeating</string>
+    <string name="notifying">Notifying</string>
+    <string name="due_by">Due by</string>
+    <string name="task_details">Task Details</string>
+    <string name="edit_task_C">Edit Task</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="complete_task">Complete Task</string>
+    <string name="no_upcoming_tasks">No upcoming tasks</string>
+    <string name="edit">Edit</string>
+    <string name="add_a_task">Add a task...</string>
+    <string name="no_tasks_today">No tasks today</string>
+    <string name="your_tasks">Your Tasks</string>
+    <string name="tasks_today">Tasks Today</string>
+    <string name="upcoming_tasks">Upcoming Tasks</string>
 
 </resources>

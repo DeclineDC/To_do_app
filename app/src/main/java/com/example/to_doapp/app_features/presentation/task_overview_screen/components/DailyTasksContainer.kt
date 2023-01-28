@@ -18,8 +18,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.to_doapp.R
 import com.example.to_doapp.app_features.presentation.task_overview_screen.TaskOverviewViewModel
 import com.example.to_doapp.app_features.presentation.util.Screen
 import com.example.to_doapp.ui.theme.LocalSpacing
@@ -61,7 +63,7 @@ fun DailyTasksContainer(
                                 })
                         {
                             Text(
-                                text = "No tasks today",
+                                text = stringResource(R.string.no_tasks_today),
                                 style = MaterialTheme.typography.h5,
                                 color = MaterialTheme.colors.primaryVariant
                             )
@@ -73,13 +75,13 @@ fun DailyTasksContainer(
                             ) {
                                 Icon(
                                     imageVector = Icons.Filled.Edit,
-                                    contentDescription = "Edit",
+                                    contentDescription = stringResource(id = R.string.edit),
                                     tint = MaterialTheme.colors.secondary,
                                     modifier = Modifier.size(20.dp)
                                 )
                                 Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
                                 Text(
-                                    text = "Add a task...",
+                                    text = stringResource(id = R.string.add_a_task),
                                     style = MaterialTheme.typography.h1,
                                     color = MaterialTheme.colors.secondary,
                                 )

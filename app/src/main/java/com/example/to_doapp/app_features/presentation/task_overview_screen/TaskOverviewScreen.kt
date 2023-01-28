@@ -69,7 +69,7 @@ fun TaskOverviewScreen(
         ) {
             Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
             Text(
-                text = "Tasks Today",
+                text = stringResource(R.string.tasks_today),
                 modifier = Modifier.padding(spacing.spaceMedium),
                 style = MaterialTheme.typography.h1,
                 color = MaterialTheme.colors.onPrimary
@@ -80,7 +80,7 @@ fun TaskOverviewScreen(
             )
             Spacer(modifier = Modifier.padding(spacing.spaceExtraSmall))
             Text(
-                text = "Upcoming Tasks",
+                text = stringResource(R.string.upcoming_tasks),
                 modifier = Modifier.padding(spacing.spaceMedium),
                 style = MaterialTheme.typography.h1,
                 color = MaterialTheme.colors.onPrimary

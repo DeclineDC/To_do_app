@@ -43,7 +43,7 @@ fun TaskDetailTopBar(
         ) {
             Box() {}
             Text(
-                text = "Task Details",
+                text = stringResource(R.string.task_details),
                 style = MaterialTheme.typography.h2,
                 color = MaterialTheme.colors.onPrimary,
                 textAlign = TextAlign.Center

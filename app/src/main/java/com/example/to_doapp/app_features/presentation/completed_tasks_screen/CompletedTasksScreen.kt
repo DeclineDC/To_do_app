@@ -8,8 +8,10 @@ import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.to_doapp.R
 import com.example.to_doapp.app_features.presentation.completed_tasks_screen.components.CompletedTasksCard
 import com.example.to_doapp.app_features.presentation.completed_tasks_screen.components.CompletedTasksContainer
 import com.example.to_doapp.app_features.presentation.completed_tasks_screen.components.CompletedTasksTopBar
@@ -46,7 +48,7 @@ fun CompletedTasksScreen(
 
             CompletedTasksCard(viewModel.state.allTasks.size)
             Text(
-                text = "Completed Tasks",
+                text = stringResource(R.string.completed_task_C),
                 modifier = Modifier.padding(spacing.spaceMedium),
                 style = MaterialTheme.typography.h1,
                 color = MaterialTheme.colors.onPrimary

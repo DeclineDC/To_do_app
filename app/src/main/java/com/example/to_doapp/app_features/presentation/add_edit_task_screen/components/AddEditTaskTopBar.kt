@@ -47,7 +47,7 @@ fun AddEditTaskTopBar(
         ) {
             Box() {}
             Text(
-                text = if (isExistingTask) "Edit Task" else "New Task",
+                text = if (isExistingTask) stringResource(R.string.edit_task) else stringResource(R.string.new_task),
                 style = MaterialTheme.typography.h2,
                 color = MaterialTheme.colors.onPrimary
             )

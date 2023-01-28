@@ -13,9 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.to_doapp.R
 import com.example.to_doapp.ui.theme.LocalSpacing
 
 
@@ -81,12 +83,12 @@ fun TaskDetailCard(
                     ) {
                         IconRow(
                             icon = Icons.Default.Refresh,
-                            text = "Repeating",
+                            text = stringResource(R.string.repeating),
                             isEnabled = isTaskRepeating
                         )
                         IconRow(
                             icon = Icons.Default.Notifications,
-                            text = "Notifying",
+                            text = stringResource(R.string.notifying),
                             isEnabled = isTaskNotifying
                         )
                     }
@@ -98,7 +100,7 @@ fun TaskDetailCard(
                             .fillMaxWidth()
                     ) {
                         Text(
-                            text = "Due by",
+                            text = stringResource(R.string.due_by),
                             style = MaterialTheme.typography.body1,
                             fontWeight = FontWeight.Normal
                         )

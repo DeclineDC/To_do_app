@@ -10,11 +10,13 @@ import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.to_doapp.R
 import com.example.to_doapp.ui.theme.LocalSpacing
 
 @Composable
@@ -43,7 +45,7 @@ fun CompletedTasksCard(
                     )
             ) {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
-                    Text(text = "You have completed...", style = typography.h3)
+                    Text(text = stringResource(R.string.you_have_completed), style = typography.h3)
                 }
                 Spacer(modifier = Modifier.padding(spacing.spaceSmall))
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
@@ -57,7 +59,7 @@ fun CompletedTasksCard(
 
                 Spacer(modifier = Modifier.padding(spacing.spaceSmall))
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    Text(text = "...Tasks so far!", style = typography.h3)
+                    Text(text = stringResource(R.string.tasks_so_far), style = typography.h3)
                 }
 
 

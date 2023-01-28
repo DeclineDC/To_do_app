@@ -3,18 +3,22 @@ package com.example.to_doapp.app_features.presentation.add_edit_task_screen.comp
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import com.example.to_doapp.ui.theme.LocalSpacing
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun CardForm(
     text: String,
@@ -26,6 +30,7 @@ fun CardForm(
 ) {
 
     val spacing = LocalSpacing.current
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     Row(
         modifier = Modifier
@@ -57,6 +62,7 @@ fun CardForm(
                     value = value,
                     onValueChange = onValueChange,
                     keyboardOptions = keyboardOptions,
+                    keyboardActions = KeyboardActions(onAny = {keyboardController?.hide()}),
                     readOnly = !isEditable,
                     placeholder = {
                         Text(
@@ -70,7 +76,8 @@ fun CardForm(
                         backgroundColor = MaterialTheme.colors.primary,
                         focusedIndicatorColor = MaterialTheme.colors.primary,
                         unfocusedIndicatorColor = MaterialTheme.colors.primary,
-                        cursorColor = MaterialTheme.colors.onPrimary
+                        cursorColor = MaterialTheme.colors.onPrimary,
+
                     )
                 )
             }

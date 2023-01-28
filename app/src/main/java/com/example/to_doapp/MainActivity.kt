@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -76,7 +77,8 @@ class MainActivity : ComponentActivity() {
                         TaskBottomNavBar(
                             showBottomBar = showBottomBar,
                             onHomeClick = { navController.navigate(Screen.TaskOverviewScreen.route) },
-                            onCompletedTasksClick = { navController.navigate(Screen.CompletedTasksScreen.route) })
+                            onCompletedTasksClick = { navController.navigate(Screen.CompletedTasksScreen.route) }
+                        )
                     },
                     isFloatingActionButtonDocked = true,
                     floatingActionButton = {

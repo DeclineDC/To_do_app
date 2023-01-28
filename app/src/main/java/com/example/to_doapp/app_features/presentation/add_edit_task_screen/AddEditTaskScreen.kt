@@ -135,7 +135,7 @@ fun AddEditTaskScreen(
             )
 
             DateCardForm(
-                value = if (isExistingTask) parseStringToDate(
+                value = if (isExistingTask) parseToDateString(
                     day = viewModel.state.day.toString(),
                     month = viewModel.state.month.toString(),
                     year = viewModel.state.year.toString()

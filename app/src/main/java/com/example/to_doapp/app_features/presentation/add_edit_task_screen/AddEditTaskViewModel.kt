@@ -12,6 +12,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.to_doapp.app_features.domain.model.Task
 import com.example.to_doapp.app_features.domain.use_case.TaskUseCases
 import com.example.to_doapp.app_features.domain.util.InvalidTaskException
+import com.example.to_doapp.app_features.presentation.add_edit_task_screen.components.parseStringToDate
 import com.example.to_doapp.app_features.presentation.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -72,6 +73,11 @@ class AddEditTaskViewModel @Inject constructor(
                                 day = state.date.dayOfMonth,
                                 month = state.date.monthValue,
                                 year = state.date.year,
+                                dueDate = parseStringToDate(
+                                    state.date.dayOfMonth.toString(),
+                                    state.date.monthValue.toString(),
+                                    state.date.year.toString()
+                                ),
                                 isTaskRepeatable = state.isRepeatableSwitchSelected,
                                 isTaskNotifying = state.isNotifyingSwitchSelected,
                                 id = selectedTask?.id

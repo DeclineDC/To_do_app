@@ -35,6 +35,7 @@ class TaskOverviewViewModel @Inject constructor(
         getAllTasks()
         viewModelScope.launch {
             getTasksByDate()
+
         }
     }
 

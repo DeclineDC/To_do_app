@@ -44,7 +44,7 @@ fun DailyTasksContainer(
     ) {
         Column(modifier = Modifier.background(MaterialTheme.colors.primary)) {
             LazyColumn(modifier = Modifier.height(212.dp)) {
-                if (viewModel.state.allTasks.isNullOrEmpty()) {
+                if (viewModel.state.dailyTasks.isNullOrEmpty()) {
                     items(1) {
                         Column(
 

@@ -42,7 +42,8 @@ class TaskDetailViewModel @Inject constructor(
                             month = task.month,
                             year = task.year,
                             isTaskRepeatable = task.isTaskRepeatable,
-                            isTaskNotifying = task.isTaskNotifying
+                            isTaskNotifying = task.isTaskNotifying,
+                            isTaskCompleted = task.isTaskCompleted
 
                         )
                     }

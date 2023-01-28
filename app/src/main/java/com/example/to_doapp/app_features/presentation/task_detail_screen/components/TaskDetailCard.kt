@@ -103,7 +103,7 @@ fun TaskDetailCard(
                             fontWeight = FontWeight.Normal
                         )
                         Text(
-                            text = "22/01/2023",
+                            text = date,
                             style = MaterialTheme.typography.body1,
                             fontWeight = FontWeight.Normal
                         )

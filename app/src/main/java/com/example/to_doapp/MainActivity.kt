@@ -53,10 +53,6 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
 
-                var isOnTaskOverviewScreen by remember {
-                    mutableStateOf(true)
-                }
-
 
                 val spacing = LocalSpacing.current
 
@@ -79,13 +75,12 @@ class MainActivity : ComponentActivity() {
                             showBottomBar = showBottomBar,
                             onHomeClick = {
                                 navController.navigate(Screen.TaskOverviewScreen.route)
-                                    .also { isOnTaskOverviewScreen = true }
+
                             },
                             onCompletedTasksClick = {
                                 navController.navigate(Screen.CompletedTasksScreen.route)
-                                    .also { isOnTaskOverviewScreen = false }
-                            },
-                            isOnTaskOverviewScreen = isOnTaskOverviewScreen
+
+                            }
                         )
                     },
                     isFloatingActionButtonDocked = true,

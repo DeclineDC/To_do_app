@@ -36,8 +36,7 @@ import com.example.to_doapp.app_features.presentation.util.Screen
 fun TaskBottomNavBar(
     showBottomBar: Boolean,
     onHomeClick: () -> Unit,
-    onCompletedTasksClick: () -> Unit,
-    isOnTaskOverviewScreen: Boolean
+    onCompletedTasksClick: () -> Unit
 
 ) {
 
@@ -64,7 +63,7 @@ fun TaskBottomNavBar(
                         imageVector = Icons.Outlined.Home,
                         contentDescription = null,
                         modifier = Modifier.size(32.dp),
-                        tint = if (isOnTaskOverviewScreen) Color.Black else Color.Gray
+                        tint = Color.Gray
                     )
                 }
 
@@ -81,7 +80,7 @@ fun TaskBottomNavBar(
                         contentDescription = null,
                         modifier = Modifier
                             .size(32.dp),
-                        tint = if (isOnTaskOverviewScreen) Color.Gray else Color.Black
+                        tint = Color.Gray
                     )
                 }
 

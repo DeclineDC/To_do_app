@@ -34,6 +34,7 @@ fun TaskDetailTopBar(
             .fillMaxHeight(0.1f)
             .background(color = MaterialTheme.colors.primary)
             .padding(start = 12.dp, top = 32.dp, end = 12.dp, bottom = 12.dp)
+            .offset(x = 7.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier

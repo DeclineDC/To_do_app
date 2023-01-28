@@ -58,10 +58,7 @@ fun CompletedTasksContainer(
                                     top = 55.dp,
                                     bottom = 55.dp
                                 )
-                                .clickable(indication = null,
-                                    interactionSource = remember { MutableInteractionSource() }) {
-                                    navController.navigate(Screen.AddEditTaskScreen.route)
-                                })
+                        )
                         {
                             Text(
                                 text = "No completed tasks",

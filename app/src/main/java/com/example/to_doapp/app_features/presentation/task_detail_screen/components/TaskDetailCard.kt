@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.to_doapp.ui.theme.LocalSpacing
 
@@ -53,12 +54,19 @@ fun TaskDetailCard(
                     )
             ) {
                 Row(Modifier.fillMaxWidth()) {
-                    Text(text = title, style = MaterialTheme.typography.h4)
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.h4,
+                        maxLines = 3,
+                        overflow = TextOverflow.Ellipsis
+                    )
                 }
                 Spacer(modifier = Modifier.padding(spacing.spaceSmall))
                 Row(Modifier.fillMaxWidth()) {
                     Text(
                         text = description,
+                        maxLines = 6,
+                        overflow = TextOverflow.Ellipsis,
                         style = MaterialTheme.typography.body1,
                         fontWeight = FontWeight.Normal,
                         modifier = Modifier.offset(x = 5.dp)

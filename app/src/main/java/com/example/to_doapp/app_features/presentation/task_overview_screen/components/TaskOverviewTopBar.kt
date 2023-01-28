@@ -42,10 +42,16 @@ fun TaskOverviewTopBar(
             .background(color = MaterialTheme.colors.primary)
             .padding(start = 12.dp, top = 32.dp, end = 12.dp, bottom = 12.dp)
     ) {
-        Text(
-            text = "Your Tasks",
-            style = MaterialTheme.typography.h2,
-            color = MaterialTheme.colors.onPrimary
-        )
+        Row(horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth()
+        ) {
+            Text(
+                text = "Your Tasks",
+                style = MaterialTheme.typography.h2,
+                color = MaterialTheme.colors.onPrimary
+            )
+        }
     }
 }

@@ -37,10 +37,10 @@ fun TaskBottomNavBar(
     showBottomBar: Boolean,
     onHomeClick: () -> Unit,
     onCompletedTasksClick: () -> Unit,
+    isOnTaskOverviewScreen: Boolean
 
-    ) {
+) {
 
-    var isOnTaskOverviewScreen: Boolean = true
 
     AnimatedVisibility(visible = showBottomBar) {
         BottomAppBar(
@@ -81,7 +81,7 @@ fun TaskBottomNavBar(
                         contentDescription = null,
                         modifier = Modifier
                             .size(32.dp),
-                        tint = if (isOnTaskOverviewScreen) Color.Gray else MaterialTheme.colors.secondary
+                        tint = if (isOnTaskOverviewScreen) Color.Gray else Color.Black
                     )
                 }
 

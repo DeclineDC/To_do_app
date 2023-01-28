@@ -16,11 +16,8 @@ import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -56,6 +53,10 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
 
+                var isOnTaskOverviewScreen by remember {
+                    mutableStateOf(true)
+                }
+
 
                 val spacing = LocalSpacing.current
 
@@ -76,8 +77,15 @@ class MainActivity : ComponentActivity() {
                     bottomBar = {
                         TaskBottomNavBar(
                             showBottomBar = showBottomBar,
-                            onHomeClick = { navController.navigate(Screen.TaskOverviewScreen.route) },
-                            onCompletedTasksClick = { navController.navigate(Screen.CompletedTasksScreen.route) }
+                            onHomeClick = {
+                                navController.navigate(Screen.TaskOverviewScreen.route)
+                                    .also { isOnTaskOverviewScreen = true }
+                            },
+                            onCompletedTasksClick = {
+                                navController.navigate(Screen.CompletedTasksScreen.route)
+                                    .also { isOnTaskOverviewScreen = false }
+                            },
+                            isOnTaskOverviewScreen = isOnTaskOverviewScreen
                         )
                     },
                     isFloatingActionButtonDocked = true,

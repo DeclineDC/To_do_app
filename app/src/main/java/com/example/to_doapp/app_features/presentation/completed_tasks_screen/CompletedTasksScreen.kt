@@ -57,7 +57,7 @@ fun CompletedTasksScreen(
                     modifier = Modifier.weight(.3f)
                 )
                 TaskSubContainer(
-                    completedTasks = viewModel.state.allTasks.size,
+                    completedTasks = viewModel.state.expiredTasks.size,
                     text = "Expired tasks",
                     textColor = Color(0XFFe07575),
                     modifier = Modifier.weight(.3f)

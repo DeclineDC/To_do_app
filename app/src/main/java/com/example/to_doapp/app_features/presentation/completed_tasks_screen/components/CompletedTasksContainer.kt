@@ -46,7 +46,7 @@ fun CompletedTasksContainer(
         backgroundColor = MaterialTheme.colors.primary
     ) {
         Column(modifier = Modifier.background(MaterialTheme.colors.primary)) {
-            LazyColumn(modifier = Modifier.height(290.dp)) {
+            LazyColumn(modifier = Modifier.height(324.dp)) {
                 if (viewModel.state.allTasks.isNullOrEmpty()) {
                     items(1) {
                         Column(
@@ -62,6 +62,7 @@ fun CompletedTasksContainer(
                                 )
                         )
                         {
+                            Spacer(modifier = Modifier.padding(spacing.spaceLarge))
                             Text(
                                 text = stringResource(R.string.no_completed_tasks),
                                 style = MaterialTheme.typography.h5,

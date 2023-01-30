@@ -4,7 +4,9 @@ package com.example.to_doapp.app_features.data.local
 import androidx.room.*
 import com.example.to_doapp.app_features.domain.model.Task
 import kotlinx.coroutines.flow.Flow
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.ZoneOffset
 
 @Dao
@@ -15,12 +17,12 @@ interface TaskDao {
 
     @Query("SELECT * FROM task WHERE isTaskCompleted = 0 AND dueDate > :currentDateTimeStamp ORDER BY dueDate ASC")
     fun getTasks(
-        currentDateTimeStamp: Long = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+        currentDateTimeStamp: Long = LocalDate.now().toEpochDay()
     ): Flow<List<Task>>
 
     @Query("SELECT * FROM task WHERE isTaskCompleted = 0 AND dueDate < :currentDateTimeStamp ORDER BY dueDate ASC")
     fun getExpiredTasks(
-        currentDateTimeStamp: Long = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+        currentDateTimeStamp: Long = LocalDate.now().toEpochDay()
     ): Flow<List<Task>>
 
 

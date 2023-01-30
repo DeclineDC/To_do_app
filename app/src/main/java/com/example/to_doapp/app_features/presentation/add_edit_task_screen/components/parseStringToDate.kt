@@ -11,24 +11,24 @@ fun parseStringToDate(day: String, month: String, year: String): Long {
 
     var date: String = when {
         day.length == 1 && month.length == 1 -> {
-            "$year-0$month-0$day 00:00"
+            "$year-0$month-0$day"
         }
         day.length == 2 && month.length == 1 -> {
-            "$year-0$month-$day 00:00"
+            "$year-0$month-$day"
         }
         day.length == 1 && month.length == 2 -> {
-            "$year-$month-0$day 00:00"
+            "$year-$month-0$day"
         }
         else -> {
-            "$year-$month-$day 00:00"
+            "$year-$month-$day"
         }
 
     }
 
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-    val localDateTime = LocalDateTime.parse(date, formatter)
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val localDate = LocalDate.parse(date, formatter)
 
-    return localDateTime.toEpochSecond(ZoneOffset.UTC)
+    return localDate.toEpochDay()
 
 
 }

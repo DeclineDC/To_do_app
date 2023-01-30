@@ -15,7 +15,7 @@ data class Task(
     val day: Int = 0,
     val month: Int = 0,
     val year: Int = 0,
-    val dueDate: Long = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC),
+    val dueDate: Long = LocalDate.now().toEpochDay(),
     val isTaskRepeatable: Boolean,
     val isTaskNotifying: Boolean,
     val isTaskCompleted: Boolean = false,

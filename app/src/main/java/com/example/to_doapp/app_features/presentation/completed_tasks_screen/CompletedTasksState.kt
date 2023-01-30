@@ -7,8 +7,5 @@ import java.time.ZoneOffset
 data class CompletedTasksState(
     val allTasks: List<Task> = emptyList(),
     val expiredTasks: List<Task> = emptyList(),
-    val currentTime: Long = LocalDateTime.now(ZoneOffset.UTC)
-        .atZone(ZoneOffset.UTC)
-        .toInstant()
-        .toEpochMilli()
+    val currentTime: Long = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
 )

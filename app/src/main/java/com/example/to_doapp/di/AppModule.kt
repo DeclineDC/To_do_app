@@ -42,7 +42,8 @@ object AppModule {
             getTask = GetTask(repository),
             getTasks = GetTasks(repository),
             getTasksByDate = GetTasksByDate(repository),
-            getCompletedTasks = GetCompletedTasks(repository)
+            getCompletedTasks = GetCompletedTasks(repository),
+            getExpiredTasks = GetExpiredTasks(repository)
         )
 
     }

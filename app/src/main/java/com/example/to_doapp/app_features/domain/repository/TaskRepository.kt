@@ -15,5 +15,7 @@ interface TaskRepository {
 
     fun getCompletedTasks(): Flow<List<Task>>
 
-    fun getTasks(/*day: Int*/): Flow<List<Task>>
+    fun getTasks(): Flow<List<Task>>
+    fun getExpiredTasks(): Flow<List<Task>>
+
 }

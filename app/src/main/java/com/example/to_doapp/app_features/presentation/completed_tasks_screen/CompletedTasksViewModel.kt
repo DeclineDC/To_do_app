@@ -29,6 +29,7 @@ class CompletedTasksViewModel @Inject constructor(
 
 
     private fun getTasks() {
+        Log.e("Time", "${state.currentTime}")
         taskUseCases.getCompletedTasks()
             .onEach { tasks ->
                 state = state.copy(
@@ -36,12 +37,10 @@ class CompletedTasksViewModel @Inject constructor(
                 )
             }
             .launchIn(viewModelScope)
-        taskUseCases.getTasks()
+        taskUseCases.getExpiredTasks()
             .onEach { tasks ->
                 state = state.copy(
-                    expiredTasks = tasks.filter {
-                        !it.isTaskCompleted || it.dueDate < state.currentTime
-                    }
+                    expiredTasks = tasks
                 )
             }
             .launchIn(viewModelScope)

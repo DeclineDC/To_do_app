@@ -18,6 +18,12 @@ interface TaskDao {
         currentDateTimeStamp: Long = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
     ): Flow<List<Task>>
 
+    @Query("SELECT * FROM task WHERE isTaskCompleted = 0 AND dueDate < :currentDateTimeStamp ORDER BY dueDate ASC")
+    fun getExpiredTasks(
+        currentDateTimeStamp: Long = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+    ): Flow<List<Task>>
+
+
     @Query("SELECT * FROM task WHERE day = :day AND month = :month AND year = :year AND isTaskCompleted = 0")
     fun getTasksByDate(day: Int, month: Int, year: Int): Flow<List<Task>>?
 

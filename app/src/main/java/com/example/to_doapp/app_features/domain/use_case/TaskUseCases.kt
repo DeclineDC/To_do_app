@@ -6,5 +6,6 @@ data class TaskUseCases(
     val getTask: GetTask,
     val getTasksByDate: GetTasksByDate,
     val getTasks: GetTasks,
-    val getCompletedTasks: GetCompletedTasks
+    val getCompletedTasks: GetCompletedTasks,
+    val getExpiredTasks: GetExpiredTasks
 )

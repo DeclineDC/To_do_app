@@ -26,7 +26,11 @@ class TaskRepositoryImpl(private val dao: TaskDao) : TaskRepository {
         return dao.getCompletedTasks()
     }
 
-    override fun getTasks(/*day: Int*/): Flow<List<Task>> {
-        return dao.getTasks(/*day*/)
+    override fun getTasks(): Flow<List<Task>> {
+        return dao.getTasks()
+    }
+
+    override fun getExpiredTasks(): Flow<List<Task>> {
+        return dao.getExpiredTasks()
     }
 }

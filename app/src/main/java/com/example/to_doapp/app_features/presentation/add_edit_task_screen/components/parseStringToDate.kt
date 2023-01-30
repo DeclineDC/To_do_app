@@ -28,7 +28,7 @@ fun parseStringToDate(day: String, month: String, year: String): Long {
     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
     val localDateTime = LocalDateTime.parse(date, formatter)
 
-    return "${localDateTime.toEpochSecond(ZoneOffset.UTC)}000".toLong()
+    return localDateTime.toEpochSecond(ZoneOffset.UTC)
 
 
 }
